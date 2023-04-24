@@ -11,13 +11,14 @@ section {
   display: flex;
   flex-direction: column;
   /* Nu aici punem margin */
-  margin-left: 24px;
+  /* margin-left: 24px; */
 }
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* Aici padding 24px pe orizontala */
+  padding: 0 24px;
 }
 h3 {
   text-transform: uppercase;
@@ -43,10 +44,11 @@ button {
   display: flex;
   overflow-x: scroll;
   /* Nu e necesar position absolute */
-  position: absolute;
+  /* position: absolute; */
   /* Nu e necesar margin right */
-  margin-right: 8px;
+  /* margin-right: 8px; */
   /* In loc de margin right, pune padding-right: 24px ca sa ai spatiu la sfarsitul randului */
+  padding-right: 24px;
 }
 
 .card {
@@ -55,7 +57,11 @@ button {
   height: 212px;
   position: relative;
   margin-right: 16px;
-    /* aici first child margin-left: 24px */
+  /* aici first child margin-left: 24px */
+}
+
+.card:first-child {
+  margin-left: 24px;
 }
 
 .card-image img {
