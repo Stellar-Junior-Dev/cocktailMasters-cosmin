@@ -1,7 +1,54 @@
+body {
+  font-family: "Grenze Gotisch", cursive;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Flex", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 393px;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h3 {
+  text-transform: uppercase;
+  color: #c98686;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 21.79px;
+  /* margin-left: 24px; */
+}
+button {
+  display: block;
+  min-width: 40px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 900;
+  color: #c98686;
+  margin-right: 42px;
+  border: none;
+  background-color: #fff;
+}
+.first-row {
+  display: flex;
+  overflow-x: scroll;
+  position: absolute;
+  margin-right: 8px;
+}
+
 .card {
   width: 212px;
   height: 212px;
   position: relative;
+  margin-right: 16px;
 }
 
 .card-image img {
@@ -20,10 +67,13 @@
   border-radius: 0 0 8px 8px;
 }
 .center {
+  height: 44px;
   display: flex;
-  place-content: center; /* nu inteleg de ce pe verticala nu il centreaza */
+  justify-content: center;
+  align-items: center;
 }
 .card-title p {
+  margin: 0;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 16px;
@@ -35,6 +85,8 @@
   position: absolute;
   top: 12px;
   right: 12px;
+  width: 26px;
+  height: 26px;
 }
 .card-icon ion-icon {
   background-color: rgba(150, 107, 157, 0.8);
