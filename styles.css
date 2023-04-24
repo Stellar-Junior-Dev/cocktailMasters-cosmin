@@ -5,8 +5,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 393px;
 }
+
 section {
   display: flex;
   flex-direction: column;
@@ -23,7 +23,6 @@ h3 {
   font-size: 16px;
   font-weight: 900;
   line-height: 21.79px;
-  /* margin-left: 24px; */
 }
 button {
   display: block;
@@ -38,6 +37,7 @@ button {
   background-color: #fff;
 }
 .first-row {
+  width: 100vw;
   display: flex;
   overflow-x: scroll;
   position: absolute;
@@ -45,6 +45,7 @@ button {
 }
 
 .card {
+  flex-shrink: 0;
   width: 212px;
   height: 212px;
   position: relative;
