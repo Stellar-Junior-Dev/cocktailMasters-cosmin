@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: #fff4ec;
 }
 
 section {
@@ -19,6 +20,35 @@ header {
   justify-content: space-between;
   /* Aici padding 24px pe orizontala */
   padding: 0 24px;
+}
+.nav-op {
+  display: flex;
+  justify-content: flex-end;
+}
+.search-icon ion-icon {
+  width: 24px;
+  height: 24px;
+  padding-right: 17.92px;
+  padding-top: 22px;
+  color: #c98686;
+}
+.menu-icon ion-icon {
+  width: 24px;
+  height: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+  color: #c98686;
+  font-weight: bold;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 54px;
+  color: #c98686;
+  padding-left: 24px;
 }
 h3 {
   text-transform: uppercase;
@@ -37,9 +67,9 @@ button {
   color: #c98686;
   margin-right: 42px;
   border: none;
-  background-color: #fff;
+  background-color: #fff4ec;
 }
-.first-row {
+.row-drinks {
   width: 100vw;
   display: flex;
   overflow-x: scroll;
