@@ -71,7 +71,7 @@ button {
   width: 100vw;
   display: flex;
   overflow-x: scroll;
-/* Stiu ca am spus eu sa pui padding right 24px dar iti pune overflow, poti sa il scoti */
+  /* Stiu ca am spus eu sa pui padding right 24px dar iti pune overflow, poti sa il scoti */
   padding-right: 24px;
 }
 
