@@ -21,7 +21,7 @@
 let data = {
   image:
     "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
-  favorite: true,
+  favorite: false,
   name: "Mojito",
 };
 
@@ -51,7 +51,11 @@ function renderCard() {
   const divCardIcon = document.createElement("div");
   divCardIcon.classList.add("card-icon");
   const icon = document.createElement("ion-icon");
-  icon.setAttribute("name", "heart");
+  if (data.favorite === true) {
+    icon.setAttribute("name", "heart");
+  } else {
+    icon.setAttribute("name", "heart-outline");
+  }
 
   divCardIcon.appendChild(icon);
   divCenter.appendChild(paragraph);
@@ -61,10 +65,4 @@ function renderCard() {
   divCard.appendChild(divCardTitle);
   divCard.appendChild(divCardIcon);
   test.appendChild(divCard);
-
-  if (data.favorite === true) {
-    icon.style.color = "pink";
-  } else {
-    icon.style.color = "none";
-  }
 }
