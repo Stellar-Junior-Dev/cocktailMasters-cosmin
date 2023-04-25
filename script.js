@@ -37,8 +37,7 @@ function renderCard() {
   divCardImage.classList.add("card-image");
 
   const image = document.createElement("img");
-  image.src =
-    "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg";
+  image.src = data.image;
 
   const divCardTitle = document.createElement("div");
   divCardTitle.classList.add("card-title");
@@ -47,7 +46,7 @@ function renderCard() {
   divCenter.classList.add("center");
 
   const paragraph = document.createElement("p");
-  paragraph.textContent = "mojito";
+  paragraph.textContent = data.name;
 
   const divCardIcon = document.createElement("div");
   divCardIcon.classList.add("card-icon");
@@ -62,4 +61,10 @@ function renderCard() {
   divCard.appendChild(divCardTitle);
   divCard.appendChild(divCardIcon);
   test.appendChild(divCard);
+
+  if (data.favorite === true) {
+    icon.style.color = "pink";
+  } else {
+    icon.style.color = "none";
+  }
 }
