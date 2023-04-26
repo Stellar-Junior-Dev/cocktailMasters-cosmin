@@ -28,127 +28,54 @@ window.addEventListener("load", renderSection());
 
 function renderSection() {
   // pentru obiectul "data" afisati categoria completa.
-  renderCardOne();
-  renderCardTwo();
-  renderCardThree();
+
+  const drinkType = document.createElement("h3");
+  drinkType.textContent = data.categoryName;
+  // console.log(drinkType.textContent);
+  const titleName = document.querySelector(".title-name");
+  titleName.appendChild(drinkType);
+  let cards;
+  cards = renderCard();
 }
 
-function renderCardOne() {
-  const test = document.getElementById("popularDrinks");
+function renderCard() {
+  for (let i = 0; i < data.cocktailList.length; i++) {
+    const test = document.getElementById("popularDrinks");
 
-  const divCard = document.createElement("div");
-  divCard.classList.add("card");
+    const divCard = document.createElement("div");
+    divCard.classList.add("card");
 
-  const divCardImage = document.createElement("div");
-  divCardImage.classList.add("card-image");
+    const divCardImage = document.createElement("div");
+    divCardImage.classList.add("card-image");
 
-  const image = document.createElement("img");
-  image.src = mojito.image;
+    const image = document.createElement("img");
+    image.src = data.cocktailList[i].image;
 
-  const divCardTitle = document.createElement("div");
-  divCardTitle.classList.add("card-title");
+    const divCardTitle = document.createElement("div");
+    divCardTitle.classList.add("card-title");
 
-  const divCenter = document.createElement("div");
-  divCenter.classList.add("center");
+    const divCenter = document.createElement("div");
+    divCenter.classList.add("center");
 
-  const paragraph = document.createElement("p");
-  paragraph.textContent = mojito.name;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = data.cocktailList[i].name;
 
-  const divCardIcon = document.createElement("div");
-  divCardIcon.classList.add("card-icon");
-  const icon = document.createElement("ion-icon");
-  if (mojito.favorite === true) {
-    icon.setAttribute("name", "heart");
-  } else {
-    icon.setAttribute("name", "heart-outline");
+    const divCardIcon = document.createElement("div");
+    divCardIcon.classList.add("card-icon");
+    const icon = document.createElement("ion-icon");
+    if (data.cocktailList[i].favorite === true) {
+      icon.setAttribute("name", "heart");
+    } else {
+      icon.setAttribute("name", "heart-outline");
+    }
+
+    divCardIcon.appendChild(icon);
+    divCenter.appendChild(paragraph);
+    divCardTitle.appendChild(divCenter);
+    divCardImage.appendChild(image);
+    divCard.appendChild(divCardImage);
+    divCard.appendChild(divCardTitle);
+    divCard.appendChild(divCardIcon);
+    test.appendChild(divCard);
   }
-
-  divCardIcon.appendChild(icon);
-  divCenter.appendChild(paragraph);
-  divCardTitle.appendChild(divCenter);
-  divCardImage.appendChild(image);
-  divCard.appendChild(divCardImage);
-  divCard.appendChild(divCardTitle);
-  divCard.appendChild(divCardIcon);
-  test.appendChild(divCard);
-}
-
-function renderCardTwo() {
-  const test = document.getElementById("popularDrinks");
-
-  const divCard = document.createElement("div");
-  divCard.classList.add("card");
-
-  const divCardImage = document.createElement("div");
-  divCardImage.classList.add("card-image");
-
-  const image = document.createElement("img");
-  image.src = ginLemon.image;
-
-  const divCardTitle = document.createElement("div");
-  divCardTitle.classList.add("card-title");
-
-  const divCenter = document.createElement("div");
-  divCenter.classList.add("center");
-
-  const paragraph = document.createElement("p");
-  paragraph.textContent = ginLemon.name;
-
-  const divCardIcon = document.createElement("div");
-  divCardIcon.classList.add("card-icon");
-  const icon = document.createElement("ion-icon");
-  if (ginLemon.favorite === true) {
-    icon.setAttribute("name", "heart");
-  } else {
-    icon.setAttribute("name", "heart-outline");
-  }
-
-  divCardIcon.appendChild(icon);
-  divCenter.appendChild(paragraph);
-  divCardTitle.appendChild(divCenter);
-  divCardImage.appendChild(image);
-  divCard.appendChild(divCardImage);
-  divCard.appendChild(divCardTitle);
-  divCard.appendChild(divCardIcon);
-  test.appendChild(divCard);
-}
-
-function renderCardThree() {
-  const test = document.getElementById("popularDrinks");
-
-  const divCard = document.createElement("div");
-  divCard.classList.add("card");
-
-  const divCardImage = document.createElement("div");
-  divCardImage.classList.add("card-image");
-
-  const image = document.createElement("img");
-  image.src = oldFashioned.image;
-
-  const divCardTitle = document.createElement("div");
-  divCardTitle.classList.add("card-title");
-
-  const divCenter = document.createElement("div");
-  divCenter.classList.add("center");
-
-  const paragraph = document.createElement("p");
-  paragraph.textContent = oldFashioned.name;
-
-  const divCardIcon = document.createElement("div");
-  divCardIcon.classList.add("card-icon");
-  const icon = document.createElement("ion-icon");
-  if (oldFashioned.favorite === true) {
-    icon.setAttribute("name", "heart");
-  } else {
-    icon.setAttribute("name", "heart-outline");
-  }
-
-  divCardIcon.appendChild(icon);
-  divCenter.appendChild(paragraph);
-  divCardTitle.appendChild(divCenter);
-  divCardImage.appendChild(image);
-  divCard.appendChild(divCardImage);
-  divCard.appendChild(divCardTitle);
-  divCard.appendChild(divCardIcon);
-  test.appendChild(divCard);
 }
