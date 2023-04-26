@@ -1,68 +1,77 @@
-// Pentru obiectul "data" de mai jos, afiseaza din JS cardul urmator din codul de HTML:
 
-//         <div class="card">
-//           <div class="card-image">
-//             <img src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg" alt="mojito-drink">
-//           </div>
-//           <div class="card-title">
-//             <div class="center">
-//               <p>mojito</p>
-//             </div>
-//           </div>
-//           <div class="card-icon">
-//             <ion-icon name="heart"></ion-icon>
-//           </div>
-//         </div>
-
-// Task-ul se va realiza prin folosirea functiilor furnizate de JS precum document.getElementById, document.createElement
-// Tot codul va fi scris in functia renderCard.
-// ID-ul categoriei la care se va adauga cardul este "popularDrinks"
 
 let data = {
-  image:
-    "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
-  favorite: false,
-  name: "Mojito",
+    categoryName: "Popular drinks",
+    cocktailList: [
+        mojito,
+        ginLemon,
+        oldFashioned
+    ]
+}
+
+let mojito = {
+    image:
+        "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
+    favorite: false,
+    name: "Mojito",
 };
 
-window.addEventListener("load", renderCard());
+let ginLemon = {
+    image:
+        "https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg",
+    favorite: false,
+    name: "Gin Lemon",
+};
+
+let oldFashioned = {
+    image:
+        "https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg",
+    favorite: true,
+    name: "Old Fashioned",
+};
+
+window.addEventListener("load", renderSection());
+
+function renderSection() {
+    // pentru obiectul "data" afisati categoria completa.
+}
 
 function renderCard() {
-  const test = document.getElementById("popularDrinks");
+    const test = document.getElementById("popularDrinks");
 
-  const divCard = document.createElement("div");
-  divCard.classList.add("card");
+    const divCard = document.createElement("div");
+    divCard.classList.add("card");
 
-  const divCardImage = document.createElement("div");
-  divCardImage.classList.add("card-image");
+    const divCardImage = document.createElement("div");
+    divCardImage.classList.add("card-image");
 
-  const image = document.createElement("img");
-  image.src = data.image;
+    const image = document.createElement("img");
+    image.src = mojito.image;
 
-  const divCardTitle = document.createElement("div");
-  divCardTitle.classList.add("card-title");
+    const divCardTitle = document.createElement("div");
+    divCardTitle.classList.add("card-title");
 
-  const divCenter = document.createElement("div");
-  divCenter.classList.add("center");
+    const divCenter = document.createElement("div");
+    divCenter.classList.add("center");
 
-  const paragraph = document.createElement("p");
-  paragraph.textContent = data.name;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = mojito.name;
 
-  const divCardIcon = document.createElement("div");
-  divCardIcon.classList.add("card-icon");
-  const icon = document.createElement("ion-icon");
-  if (data.favorite === true) {
-    icon.setAttribute("name", "heart");
-  } else {
-    icon.setAttribute("name", "heart-outline");
-  }
+    const divCardIcon = document.createElement("div");
+    divCardIcon.classList.add("card-icon");
+    const icon = document.createElement("ion-icon");
+    if (mojito.favorite === true) {
+        icon.setAttribute("name", "heart");
+    } else {
+        icon.setAttribute("name", "heart-outline");
+    }
 
-  divCardIcon.appendChild(icon);
-  divCenter.appendChild(paragraph);
-  divCardTitle.appendChild(divCenter);
-  divCardImage.appendChild(image);
-  divCard.appendChild(divCardImage);
-  divCard.appendChild(divCardTitle);
-  divCard.appendChild(divCardIcon);
-  test.appendChild(divCard);
+    divCardIcon.appendChild(icon);
+    divCenter.appendChild(paragraph);
+    divCardTitle.appendChild(divCenter);
+    divCardImage.appendChild(image);
+    divCard.appendChild(divCardImage);
+    divCard.appendChild(divCardTitle);
+    divCard.appendChild(divCardIcon);
+    test.appendChild(divCard);
 }
