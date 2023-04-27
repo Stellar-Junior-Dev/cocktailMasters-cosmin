@@ -1,0 +1,1 @@
+// Scrie pagina de detalii direct din JS.
