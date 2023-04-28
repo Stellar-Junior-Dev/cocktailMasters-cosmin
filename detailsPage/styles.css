@@ -4,6 +4,8 @@
   font-family: "Roboto", sans-serif;
   font-family: "Roboto Flex", sans-serif;
 }
+
+/* remove margin from body */
 .divImg {
   display: flex;
   position: relative;
@@ -11,6 +13,7 @@
 }
 
 img {
+  /* no fixed width/height, width: 100% always. */
   width: 393px;
   height: 393px;
 }
@@ -43,6 +46,7 @@ img {
 
 /* Section Two */
 .frame {
+  /* no fixed width and height, width: 100% */
   width: 393px;
   height: 852px;
   position: relative;
@@ -64,8 +68,10 @@ img {
 
 .divDetails {
   display: flex;
+  /* margin left and margin right should be the same, use margin: x y; */
   margin-left: 24px;
   margin-top: 8px;
+  /* add width and box sizing so that the scroll works */
   /* overflow-x: scroll; not sure? */
 }
 
@@ -96,6 +102,7 @@ img {
 .flex {
   display: flex;
   width: 346px;
+  /* no fixed width and height, margin left and right should be the same, use box sizing */
   height: 58px;
   margin-left: 23px;
   background: #fff4ec;
@@ -117,6 +124,8 @@ img {
 }
 
 .div-country-type {
+  /* switch styling from here to div-main-instruction class, use flex-direction column on that class, and style this to have display flex */
+  /* no fixed width */
   display: flex;
   width: 346px;
   height: auto;
