@@ -74,7 +74,7 @@ let dataThree = {
 
 const drinksArray = [data, dataTwo, dataThree];
 
-window.addEventListener("load", renderSection());
+window.addEventListener("load", renderSection);
 
 function renderSection() {
   //Append shit
