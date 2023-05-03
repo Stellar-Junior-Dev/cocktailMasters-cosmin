@@ -13,3 +13,5 @@
 ### [TheCocktailDB](https://www.thecocktaildb.com)
 
 ### [Git Tutorial](https://learngitbranching.js.org)
+
+### [Career Path](career_path.xlsx)
