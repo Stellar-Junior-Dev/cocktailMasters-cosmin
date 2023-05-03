@@ -284,15 +284,3 @@ function renderLanguageFlag(language) {
   divFlag.appendChild(imgFlag);
   return divFlag;
 }
-
-function insertText(text) {}
-
-//   //   divInstructions is the main div.
-//   divInstructions.appendChild(divCountryType);
-//   main.appendChild(divInstructions);
-//   const textInstructions = document.createElement("div");
-//   textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
-//   divCountryType.appendChild(textInstructions);
-//   //   delete this below
-//   main.appendChild(divCountryType);
-// }
