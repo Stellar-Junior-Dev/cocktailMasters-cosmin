@@ -103,6 +103,13 @@ function loadDetailsPage() {
 
   const divContainAll = renderIngredientsList();
   frame.appendChild(divContainAll);
+
+  //instructins title
+  const titleInstruct = document.createElement("h2");
+  titleInstruct.textContent = "instructions";
+  titleInstruct.className = "title-style";
+  frame.appendChild(titleInstruct);
+
   body.appendChild(sectionTwo);
 }
 
@@ -201,10 +208,7 @@ function renderIngredient(ingredient) {
 
 //   //INSTRUCTIONS
 
-//   const titleInstruct = document.createElement("h2");
-//   titleInstruct.textContent = "instructions";
-//   titleInstruct.className = "title-style";
-//   main.appendChild(titleInstruct);
+//create a function called "renderInstructionsList()" where you render the instructions  -> return div which contains all the items
 
 //   const divInstructions = document.createElement("div");
 //   divInstructions.className = "div-main-instruction";
