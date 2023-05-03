@@ -14,8 +14,8 @@
 
 img {
   /* no fixed width/height, width: 100% always. */
-  width: 393px;
-  height: 393px;
+  width: 100%;
+  height: auto;
 }
 
 .divIcons {
@@ -47,8 +47,8 @@ img {
 /* Section Two */
 .frame {
   /* no fixed width and height, width: 100% */
-  width: 393px;
-  height: 852px;
+  width: 100%;
+  height: auto;
   position: relative;
   background-color: #966b9d;
 }
@@ -69,10 +69,12 @@ img {
 .divDetails {
   display: flex;
   /* margin left and margin right should be the same, use margin: x y; */
-  margin-left: 24px;
-  margin-top: 8px;
+  margin: 8px 24px;
   /* add width and box sizing so that the scroll works */
   /* overflow-x: scroll; not sure? */
+  overflow-x: scroll;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .divItem {
@@ -99,11 +101,16 @@ img {
   color: #fff4ec;
   margin-left: 24px;
 }
+
+.frame {
+  box-sizing: border-box;
+}
 .flex {
   display: flex;
-  width: 346px;
+  width: 100%;
   /* no fixed width and height, margin left and right should be the same, use box sizing */
-  height: 58px;
+  height: auto;
+  box-sizing: border-box;
   margin-left: 23px;
   background: #fff4ec;
   border-radius: 8px;
@@ -127,7 +134,7 @@ img {
   /* switch styling from here to div-main-instruction class, use flex-direction column on that class, and style this to have display flex */
   /* no fixed width */
   display: flex;
-  width: 346px;
+  width: 100%;
   height: auto;
   background-color: #fff4ec;
   margin-left: 24px;

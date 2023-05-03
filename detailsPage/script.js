@@ -63,11 +63,8 @@ let data = {
     Llene el vaso con cubitos de hielo y agregue el whisky.
     Adorne con twist de naranja y una cereza de cóctel.`,
     },
-  ]
+  ],
 };
-
-
-window.addEventListener("load", loadDetailsPage);
 
 // create a function called "renderHeaderImage(cocktailData)" where you render the image and the icons up top -> return div which contains all the items
 // create a function called "renderCocktailDetails()" where you render the title and the tags  -> return div which contains all the items
@@ -78,14 +75,42 @@ window.addEventListener("load", loadDetailsPage);
 // create a function called "renderInstructionsList()" where you render the instructions  -> return div which contains all the items
 // create a function called "renderLanguageFlag(language)" where you render the language flag  -> return div which contains all the items
 
+window.addEventListener("load", loadDetailsPage);
 function loadDetailsPage() {
   //First section
   const body = document.querySelector("body");
   const sectionOne = document.createElement("section");
+  const sectionTwo = document.createElement("section");
+  const main = document.createElement("main");
+  //Step 1
+  const divImg = renderHeaderImage(data.image);
+  sectionOne.appendChild(divImg);
+  body.appendChild(sectionOne);
+
+  // Step 2
+  const frame = renderCocktailDetails();
+  sectionTwo.appendChild(frame);
+
+  //Step 3
+  const divDetails = renderTagsList();
+  frame.appendChild(divDetails);
+
+  //Title
+  const titleMix = document.createElement("h2");
+  titleMix.textContent = "ingredients";
+  titleMix.className = "title-style";
+  frame.appendChild(titleMix);
+
+  const divContainAll = renderIngredientsList();
+  frame.appendChild(divContainAll);
+  body.appendChild(sectionTwo);
+}
+
+function renderHeaderImage(image) {
   const divImg = document.createElement("div");
   divImg.className = "divImg";
-  const image = document.createElement("img");
-  image.src = data.image;
+  const imageDiv = document.createElement("img");
+  imageDiv.src = image;
 
   const divIcons = document.createElement("div");
   divIcons.className = "divIcons";
@@ -97,94 +122,113 @@ function loadDetailsPage() {
   const iconHeart = document.createElement("ion-icon");
   iconHeart.setAttribute("name", "heart");
   iconHeart.className = "iconHeart";
-  //Append:
-
   divIcons.appendChild(iconChevron);
   divIcons.appendChild(iconHeart);
   divImg.appendChild(divIcons);
-  divImg.appendChild(image);
-  sectionOne.appendChild(divImg);
-  body.appendChild(sectionOne);
+  divImg.appendChild(imageDiv);
+  return divImg;
+}
 
-  //Second section
-  const sectionTwo = document.createElement("section");
+//Second section
 
+function renderCocktailDetails() {
   const frame = document.createElement("div");
   frame.className = "frame";
-
-  const main = document.createElement("main");
-
   const divTitle = document.createElement("div");
   divTitle.className = "divTitle";
   const drinkTitle = document.createElement("h1");
   drinkTitle.textContent = data.name;
+  divTitle.appendChild(drinkTitle);
+  frame.appendChild(divTitle);
+  return frame;
+}
 
+// create a function called "renderTagsList()" where you render the tags list  -> return div which contains all the items
+
+function renderTagsList() {
   const divDetails = document.createElement("div");
   divDetails.className = "divDetails";
 
-  for (items of data.tags) {
-    const divItem = document.createElement("div");
-    divItem.textContent = items;
-    divItem.className = "divItem";
-    divDetails.appendChild(divItem);
-  }
+  let tags = data.tags;
+  tags.forEach((tag) => {
+    let tagElement = renderTag(tag);
+    divDetails.appendChild(tagElement);
+  });
 
-  divTitle.appendChild(drinkTitle);
-  main.appendChild(divTitle);
-  main.appendChild(divDetails);
-  frame.appendChild(main);
-  sectionTwo.appendChild(frame);
-  body.appendChild(sectionTwo);
-
-  // INNGREDIENTS
-  const titleMix = document.createElement("h2");
-  titleMix.textContent = "ingredients";
-  titleMix.className = "title-style";
-  main.appendChild(titleMix);
-
-  for (mixStuff of data.ingredients) {
-    const divElements = document.createElement("div");
-    divElements.className = "flex";
-    const imgMix = document.createElement("img");
-    imgMix.className = "small-pics";
-    const textMix = document.createElement("p");
-    textMix.className = "small-pics-text";
-    imgMix.src = mixStuff.img;
-    textMix.textContent = mixStuff.mix;
-    divElements.appendChild(imgMix);
-    divElements.appendChild(textMix);
-    main.appendChild(divElements);
-  }
-  //INSTRUCTIONS
-
-  const titleInstruct = document.createElement("h2");
-  titleInstruct.textContent = "instructions";
-  titleInstruct.className = "title-style";
-  main.appendChild(titleInstruct);
-
-  const divInstructions = document.createElement("div");
-  divInstructions.className = "div-main-instruction";
-  const divCountryType = document.createElement("div");
-  divCountryType.className = "div-country-type";
-
-  for (elements of data.instructions) {
-    const divFlag = document.createElement("div");
-    divFlag.className = "div-flag";
-    const imgFlag = document.createElement("img");
-    imgFlag.className = "TEST";
-    imgFlag.src = elements.flag;
-    // console.log(elements);
-    divFlag.appendChild(imgFlag);
-    divCountryType.appendChild(divFlag);
-  }
-//   divInstructions is the main div.
-  divInstructions.appendChild(divCountryType);
-  main.appendChild(divInstructions);
-  const textInstructions = document.createElement("div");
-  textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
-  divCountryType.appendChild(textInstructions);
-//   delete this below
-  main.appendChild(divCountryType);
+  return divDetails;
 }
 
-// array=[{language:"en",flag: "https//:im", text: "dsfsgdfg"}]
+// create a function called "renderTag(tag)" where you render the tag  -> return div which contains all the items
+
+function renderTag(tag) {
+  const divItem = document.createElement("div");
+  divItem.textContent = tag;
+  divItem.className = "divItem";
+
+  return divItem;
+}
+// create a function called "renderIngredientsList()" where you render the ingredients  -> return div which contains all the items
+
+//   // INNGREDIENTS
+
+function renderIngredientsList() {
+  const divContainAll = document.createElement("div");
+  divContainAll.className = "ingredients";
+  let list = data.ingredients;
+  list.forEach((ingredient) => {
+    let listElement = renderIngredient(ingredient);
+    divContainAll.appendChild(listElement);
+  });
+  return divContainAll;
+}
+
+// create a function called "renderIngredient(ingredient)" where you render the ingredients  -> return div which contains all the items
+
+function renderIngredient(ingredient) {
+  const divElements = document.createElement("div");
+  divElements.className = "flex";
+  const imgMix = document.createElement("img");
+  imgMix.className = "small-pics";
+  const textMix = document.createElement("p");
+  textMix.className = "small-pics-text";
+  imgMix.src = ingredient.img;
+  textMix.textContent = ingredient.mix;
+  divElements.appendChild(imgMix);
+  divElements.appendChild(textMix);
+
+  return divElements; // Unde il folosesc?
+}
+
+//   //INSTRUCTIONS
+
+//   const titleInstruct = document.createElement("h2");
+//   titleInstruct.textContent = "instructions";
+//   titleInstruct.className = "title-style";
+//   main.appendChild(titleInstruct);
+
+//   const divInstructions = document.createElement("div");
+//   divInstructions.className = "div-main-instruction";
+//   const divCountryType = document.createElement("div");
+//   divCountryType.className = "div-country-type";
+
+//   for (elements of data.instructions) {
+//     const divFlag = document.createElement("div");
+//     divFlag.className = "div-flag";
+//     const imgFlag = document.createElement("img");
+//     imgFlag.className = "TEST";
+//     imgFlag.src = elements.flag;
+//     // console.log(elements);
+//     divFlag.appendChild(imgFlag);
+//     divCountryType.appendChild(divFlag);
+//   }
+//   //   divInstructions is the main div.
+//   divInstructions.appendChild(divCountryType);
+//   main.appendChild(divInstructions);
+//   const textInstructions = document.createElement("div");
+//   textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
+//   divCountryType.appendChild(textInstructions);
+//   //   delete this below
+//   main.appendChild(divCountryType);
+// }
+
+// // array=[{language:"en",flag: "https//:im", text: "dsfsgdfg"}]
