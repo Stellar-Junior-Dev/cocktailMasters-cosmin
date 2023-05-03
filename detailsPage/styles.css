@@ -130,14 +130,18 @@ img {
   color: #966b9d;
 }
 
-.div-country-type {
+.div-main-instruction {
   /* switch styling from here to div-main-instruction class, use flex-direction column on that class, and style this to have display flex */
   /* no fixed width */
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: auto;
   background-color: #fff4ec;
   margin-left: 24px;
+}
+.div-country-type {
+  display: flex;
 }
 
 .TEST {
@@ -145,4 +149,57 @@ img {
   height: 32px;
   border-radius: 50px;
   padding: 2px 2px;
+}
+.style-instructions {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #966b9d;
+}
+
+.glass {
+  text-transform: uppercase;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 25px;
+
+  color: #966b9d;
+}
+
+.div-main-instruction p {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #966b9d;
+}
+
+.bottom-nav {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 14px;
+  /* identical to box height */
+
+  color: #fff4ec;
+}
+.previous {
+  display: flex;
+  align-items: center;
+}
+.next {
+  display: flex;
+  align-items: center;
+}
+.flex-nav {
+  display: flex;
+  justify-content: space-between;
 }

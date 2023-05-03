@@ -110,6 +110,54 @@ function loadDetailsPage() {
   titleInstruct.className = "title-style";
   frame.appendChild(titleInstruct);
 
+  const divInstructions = renderInstructionList();
+  frame.appendChild(divInstructions);
+
+  const textInstructions = document.createElement("div");
+  textInstructions.className = "style-instructions";
+  textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
+  divInstructions.appendChild(textInstructions);
+
+  //bottom text
+  const divBottomText = document.createElement("div");
+  const glass = document.createElement("h2");
+  glass.textContent = "glass";
+  glass.className = "glass";
+  divBottomText.appendChild(glass);
+
+  const serveManner = document.createElement("p");
+  serveManner.textContent = "Serve: Old-fashioned glass";
+  divBottomText.appendChild(serveManner);
+  divInstructions.appendChild(divBottomText);
+
+  //bottom page icons
+  const divNavigation = document.createElement("div");
+  divNavigation.className = "flex-nav";
+  const divPrevious = document.createElement("div");
+
+  const divNext = document.createElement("div");
+  const previousIcon = document.createElement("ion-icon");
+  const nextIcon = document.createElement("ion-icon");
+  const previousText = document.createElement("p");
+  previousText.textContent = "previous";
+  previousText.className = "bottom-nav";
+  const nextText = document.createElement("p");
+  nextText.textContent = "next";
+  nextText.className = "bottom-nav";
+  previousIcon.setAttribute("name", "chevron-back-outline");
+  previousIcon.className = "bottom-nav";
+  nextIcon.setAttribute("name", "chevron-forward-outline");
+  nextIcon.className = "bottom-nav";
+  divPrevious.appendChild(previousIcon);
+  divPrevious.appendChild(previousText);
+  divPrevious.className = "previous";
+  divNext.appendChild(nextText);
+  divNext.appendChild(nextIcon);
+  divNext.className = "next";
+  divNavigation.appendChild(divPrevious);
+  divNavigation.appendChild(divNext);
+  frame.appendChild(divNavigation);
+
   body.appendChild(sectionTwo);
 }
 
@@ -203,28 +251,42 @@ function renderIngredient(ingredient) {
   divElements.appendChild(imgMix);
   divElements.appendChild(textMix);
 
-  return divElements; // Unde il folosesc?
+  return divElements;
 }
 
 //   //INSTRUCTIONS
 
 //create a function called "renderInstructionsList()" where you render the instructions  -> return div which contains all the items
 
-//   const divInstructions = document.createElement("div");
-//   divInstructions.className = "div-main-instruction";
-//   const divCountryType = document.createElement("div");
-//   divCountryType.className = "div-country-type";
+function renderInstructionList() {
+  const divInstructions = document.createElement("div");
+  divInstructions.className = "div-main-instruction";
+  const divCountryType = document.createElement("div");
+  divCountryType.className = "div-country-type";
+  let instructionsToDo = data.instructions;
+  instructionsToDo.forEach((language) => {
+    let divFinal = renderLanguageFlag(language);
+    divCountryType.appendChild(divFinal);
 
-//   for (elements of data.instructions) {
-//     const divFlag = document.createElement("div");
-//     divFlag.className = "div-flag";
-//     const imgFlag = document.createElement("img");
-//     imgFlag.className = "TEST";
-//     imgFlag.src = elements.flag;
-//     // console.log(elements);
-//     divFlag.appendChild(imgFlag);
-//     divCountryType.appendChild(divFlag);
-//   }
+    divInstructions.appendChild(divCountryType);
+  });
+  return divInstructions;
+}
+
+/// create a function called "renderLanguageFlag(language)" where you render the language flag  -> return div which contains all the items
+
+function renderLanguageFlag(language) {
+  const divFlag = document.createElement("div");
+  divFlag.className = "div-flag";
+  const imgFlag = document.createElement("img");
+  imgFlag.className = "TEST";
+  imgFlag.src = language.flag;
+  divFlag.appendChild(imgFlag);
+  return divFlag;
+}
+
+function insertText(text) {}
+
 //   //   divInstructions is the main div.
 //   divInstructions.appendChild(divCountryType);
 //   main.appendChild(divInstructions);
@@ -234,5 +296,3 @@ function renderIngredient(ingredient) {
 //   //   delete this below
 //   main.appendChild(divCountryType);
 // }
-
-// // array=[{language:"en",flag: "https//:im", text: "dsfsgdfg"}]
