@@ -143,6 +143,7 @@ function renderCocktailDetails() {
   frame.appendChild(divParentMain);
 
   const textInstructions = document.createElement("div");
+  textInstructions.id = "change-language";
   textInstructions.className = "style-instructions";
   textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
   divInstructions.appendChild(textInstructions);
@@ -257,6 +258,13 @@ function renderInstructionList() {
 function renderLanguageFlag(language) {
   const divFlag = document.createElement("div");
   divFlag.className = "div-flag";
+  divFlag.addEventListener("click", changeLanguage);
+  function changeLanguage() {
+    const flagText = document.getElementById("change-language");
+    flagText.textContent = language.text;
+    return flagText;
+  }
+
   const imgFlag = document.createElement("img");
   imgFlag.className = "TEST";
   imgFlag.src = language.flag;
