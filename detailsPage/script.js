@@ -77,88 +77,22 @@ let data = {
 
 window.addEventListener("load", loadDetailsPage);
 function loadDetailsPage() {
-  //First section
   const body = document.querySelector("body");
-  const sectionOne = document.createElement("section");
-  const sectionTwo = document.createElement("section");
-  const main = document.createElement("main");
-  //Step 1
   const divImg = renderHeaderImage(data.image);
-  sectionOne.appendChild(divImg);
-  body.appendChild(sectionOne);
+  body.appendChild(divImg);
 
-  // Step 2
   const frame = renderCocktailDetails();
-  sectionTwo.appendChild(frame);
+  body.appendChild(frame);
+}
 
-  //Step 3
-  const divDetails = renderTagsList();
-  frame.appendChild(divDetails);
+//create a function for page titles <h2>
 
-  //Title
-  const titleMix = document.createElement("h2");
-  titleMix.textContent = "ingredients";
-  titleMix.className = "title-style";
-  frame.appendChild(titleMix);
+function createTitles(content, className) {
+  const titles = document.createElement("h2");
+  titles.textContent = content;
+  titles.className = className;
 
-  const divContainAll = renderIngredientsList();
-  frame.appendChild(divContainAll);
-
-  //instructins title
-  const titleInstruct = document.createElement("h2");
-  titleInstruct.textContent = "instructions";
-  titleInstruct.className = "title-style";
-  frame.appendChild(titleInstruct);
-
-  const divInstructions = renderInstructionList();
-  frame.appendChild(divInstructions);
-
-  const textInstructions = document.createElement("div");
-  textInstructions.className = "style-instructions";
-  textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
-  divInstructions.appendChild(textInstructions);
-
-  //bottom text
-  const divBottomText = document.createElement("div");
-  const glass = document.createElement("h2");
-  glass.textContent = "glass";
-  glass.className = "glass";
-  divBottomText.appendChild(glass);
-
-  const serveManner = document.createElement("p");
-  serveManner.textContent = "Serve: Old-fashioned glass";
-  divBottomText.appendChild(serveManner);
-  divInstructions.appendChild(divBottomText);
-
-  //bottom page icons
-  const divNavigation = document.createElement("div");
-  divNavigation.className = "flex-nav";
-  const divPrevious = document.createElement("div");
-
-  const divNext = document.createElement("div");
-  const previousIcon = document.createElement("ion-icon");
-  const nextIcon = document.createElement("ion-icon");
-  const previousText = document.createElement("p");
-  previousText.textContent = "previous";
-  previousText.className = "bottom-nav";
-  const nextText = document.createElement("p");
-  nextText.textContent = "next";
-  nextText.className = "bottom-nav";
-  previousIcon.setAttribute("name", "chevron-back-outline");
-  previousIcon.className = "bottom-nav";
-  nextIcon.setAttribute("name", "chevron-forward-outline");
-  nextIcon.className = "bottom-nav";
-  divPrevious.appendChild(previousIcon);
-  divPrevious.appendChild(previousText);
-  divPrevious.className = "previous";
-  divNext.appendChild(nextText);
-  divNext.appendChild(nextIcon);
-  divNext.className = "next";
-  divNavigation.appendChild(divPrevious);
-  divNavigation.appendChild(divNext);
-  frame.appendChild(divNavigation);
-
-  body.appendChild(sectionTwo);
+  return titles;
 }
 
 function renderHeaderImage(image) {
@@ -170,21 +104,16 @@ function renderHeaderImage(image) {
   const divIcons = document.createElement("div");
   divIcons.className = "divIcons";
 
-  const iconChevron = document.createElement("ion-icon");
-  iconChevron.setAttribute("name", "chevron-back-outline");
-  iconChevron.className = "iconChevron";
+  const iconChevron = renderIcon("chevron-back-outline", "iconChevron");
 
-  const iconHeart = document.createElement("ion-icon");
-  iconHeart.setAttribute("name", "heart");
-  iconHeart.className = "iconHeart";
+  const iconHeart = renderIcon("heart", "iconHeart");
+
   divIcons.appendChild(iconChevron);
   divIcons.appendChild(iconHeart);
   divImg.appendChild(divIcons);
   divImg.appendChild(imageDiv);
   return divImg;
 }
-
-//Second section
 
 function renderCocktailDetails() {
   const frame = document.createElement("div");
@@ -195,6 +124,61 @@ function renderCocktailDetails() {
   drinkTitle.textContent = data.name;
   divTitle.appendChild(drinkTitle);
   frame.appendChild(divTitle);
+  const divDetails = renderTagsList();
+  frame.appendChild(divDetails);
+
+  const titleMix = createTitles("ingredients", "title-style");
+  frame.appendChild(titleMix);
+
+  const divContainAll = renderIngredientsList();
+  frame.appendChild(divContainAll);
+
+  const titleInstruct = createTitles("instructions", "title-style");
+  frame.appendChild(titleInstruct);
+
+  const divParentMain = document.createElement("div");
+  divParentMain.className = "div-parent-main";
+  const divInstructions = renderInstructionList();
+  divParentMain.appendChild(divInstructions);
+  frame.appendChild(divParentMain);
+
+  const textInstructions = document.createElement("div");
+  textInstructions.className = "style-instructions";
+  textInstructions.textContent = data.instructions[0].text; // adaugare provizorie.
+  divInstructions.appendChild(textInstructions);
+
+  //bottom text
+  const divBottomText = document.createElement("div");
+  const glass = createTitles("glass", "glass");
+  divBottomText.appendChild(glass);
+
+  const serveManner = document.createElement("p");
+  serveManner.textContent = "Serve: Old-fashioned glass";
+  divBottomText.appendChild(serveManner);
+  divInstructions.appendChild(divBottomText);
+
+  //bottom page icons
+  const divNavigation = document.createElement("div");
+  divNavigation.className = "flex-nav";
+  const divPrevious = document.createElement("div");
+  const divNext = document.createElement("div");
+  //create icons
+  const previousIcon = renderIcon("chevron-back-outline", "bottom-nav");
+  const nextIcon = renderIcon("chevron-forward-outline", "bottom-nav");
+
+  //create text for icons
+  const previousText = renderTextIcon("previous", "bottom-nav");
+  const nextText = renderTextIcon("next", "bottom-nav");
+
+  divPrevious.appendChild(previousIcon);
+  divPrevious.appendChild(previousText);
+  divPrevious.className = "previous";
+  divNext.appendChild(nextText);
+  divNext.appendChild(nextIcon);
+  divNext.className = "next";
+  divNavigation.appendChild(divPrevious);
+  divNavigation.appendChild(divNext);
+  frame.appendChild(divNavigation);
   return frame;
 }
 
@@ -224,8 +208,6 @@ function renderTag(tag) {
 }
 // create a function called "renderIngredientsList()" where you render the ingredients  -> return div which contains all the items
 
-//   // INNGREDIENTS
-
 function renderIngredientsList() {
   const divContainAll = document.createElement("div");
   divContainAll.className = "ingredients";
@@ -254,8 +236,6 @@ function renderIngredient(ingredient) {
   return divElements;
 }
 
-//   //INSTRUCTIONS
-
 //create a function called "renderInstructionsList()" where you render the instructions  -> return div which contains all the items
 
 function renderInstructionList() {
@@ -267,7 +247,6 @@ function renderInstructionList() {
   instructionsToDo.forEach((language) => {
     let divFinal = renderLanguageFlag(language);
     divCountryType.appendChild(divFinal);
-
     divInstructions.appendChild(divCountryType);
   });
   return divInstructions;
@@ -283,4 +262,24 @@ function renderLanguageFlag(language) {
   imgFlag.src = language.flag;
   divFlag.appendChild(imgFlag);
   return divFlag;
+}
+
+//create a function called renderIcon(iconName, className)
+
+function renderIcon(iconName, className) {
+  const iconChevron = document.createElement("ion-icon");
+  iconChevron.setAttribute("name", iconName);
+  iconChevron.className = className;
+
+  return iconChevron;
+}
+
+//Create a function called renderTextIcon(content,className)
+
+function renderTextIcon(content, className) {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = content;
+  paragraph.className = className;
+
+  return paragraph;
 }
