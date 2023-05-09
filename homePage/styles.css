@@ -139,20 +139,21 @@ button {
   width: 100%;
   height: 80vh;
   transition: all 2s ease-in-out;
-  /* background: #fff4ec; */
+  background: #fff4ec;
   border-radius: 16px 16px 0px 0px;
-  background-color: red;
 }
 .c-search-visible {
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 80px;
-  width: 100%;
+  width: 100vw;
   height: 80vh;
-  transition: all 2s ease-in;
-  /* background: #fff4ec; */
+  /* transition: <property> <duration> <timing-function> <delay>; */
+  transition: 500ms ease-out 600ms;
+  /* transform: */
+  background: #fff4ec;
   border-radius: 16px 16px 0px 0px;
-  background-color: red;
+  z-index: 1;
 }
 .c-close {
   position: absolute;
@@ -177,13 +178,13 @@ button {
   position: absolute;
   top: 110px;
   left: 24px;
-
-  background-color: #fff4ec;
 }
 .c-input {
   border: 2px solid #c98686;
   height: 42px;
   width: 345px;
+  background-color: #fff4ec;
+  border-radius: 8px;
 }
 ::placeholder {
   text-transform: uppercase;
@@ -191,6 +192,7 @@ button {
   font-weight: 900;
   font-size: 15px;
   line-height: 22px;
+  padding: 11px 0px 9px 16px;
 }
 .c-search {
   position: absolute;
@@ -202,6 +204,7 @@ button {
 }
 
 .c-paragraph {
+  text-transform: uppercase;
   position: absolute;
   margin: 0;
   top: 184px;
@@ -209,5 +212,26 @@ button {
   font-weight: 900;
   font-size: 16px;
   line-height: 22px;
+  color: #c98686;
+}
+.c-icon-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 280px;
+}
+.c-icon {
+  color: #c98686;
+}
+.c-figcaption {
+  margin-top: 16px;
+  text-transform: uppercase;
+  font-family: Noto Sans;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
   color: #c98686;
 }

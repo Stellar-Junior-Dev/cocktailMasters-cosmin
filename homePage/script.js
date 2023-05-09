@@ -101,8 +101,10 @@ function renderSection() {
   showResults.textContent = "results";
 
   const divResultImage = document.createElement("figure");
+  divResultImage.className = "c-icon-result";
   const resultImage = document.createElement("img");
-  resultImage.src = "../homePage/Group.png";
+  resultImage.src = "./Group.png";
+  resultImage.className = "c-icon";
   const figcaption = document.createElement("figcaption");
   figcaption.className = "c-figcaption";
   figcaption.textContent = "no results yet";
