@@ -243,7 +243,6 @@ button {
   left: -100%;
   z-index: 1;
   width: 100%;
-  /* background-color: red; */
 }
 .c-burger-menu-visible {
   position: fixed;

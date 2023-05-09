@@ -85,6 +85,12 @@ function renderSection() {
   const divSearchMenu = document.createElement("div");
   divSearchMenu.className = "c-search-menu";
   const closeIcon = createIcon("close", "c-close");
+
+  //Exit search page
+  closeIcon.addEventListener("click", exitPage);
+  function exitPage() {
+    divSearchMenu.className = "c-search-menu";
+  }
   const titleSearch = document.createElement("h2");
   titleSearch.className = "c-title";
   titleSearch.textContent = "search";
@@ -130,6 +136,10 @@ function renderSection() {
   const divBurgerMenu = document.createElement("div");
   divBurgerMenu.className = "c-burger-menu";
   const exitMenuIcon = createIcon("close", "c-exit");
+  exitMenuIcon.addEventListener("click", exitMenu);
+  function exitMenu() {
+    divBurgerMenu.className = "c-burger-menu";
+  }
   const divLinks = document.createElement("div");
   divLinks.className = "c-links";
   const homeLink = document.createElement("h2");
