@@ -122,13 +122,60 @@ function renderSection() {
 
   //
   //
+
+  //
+  //
+  //Create the "burger" navigation
+
+  const divBurgerMenu = document.createElement("div");
+  divBurgerMenu.className = "c-burger-menu";
+  const exitMenuIcon = createIcon("close", "c-exit");
+  const divLinks = document.createElement("div");
+  divLinks.className = "c-links";
+  const homeLink = document.createElement("h2");
+  homeLink.textContent = "home";
+  homeLink.className = "c-menu";
+  const favoritesLink = document.createElement("h2");
+  favoritesLink.textContent = "favorites";
+  favoritesLink.className = "c-menu";
+  const popularLink = document.createElement("h2");
+  popularLink.textContent = "popular drinks";
+  popularLink.className = "c-menu";
+  const latestDrinksLink = document.createElement("h2");
+  latestDrinksLink.textContent = "latest drinks";
+  latestDrinksLink.className = "c-menu";
+  const randomLink = document.createElement("h2");
+  randomLink.textContent = "random drinks";
+  randomLink.className = "c-menu";
+  const footerCopyright = document.createElement("p");
+  footerCopyright.className = "c-copyright";
+  footerCopyright.innerHTML = "<p>&copy2023 SkiwindGroup & TheCocktailDB";
+  //append
+  divBurgerMenu.appendChild(exitMenuIcon);
+  divLinks.appendChild(homeLink);
+  divLinks.appendChild(favoritesLink);
+  divLinks.appendChild(popularLink);
+  divLinks.appendChild(latestDrinksLink);
+  divLinks.appendChild(randomLink);
+  divBurgerMenu.appendChild(divLinks);
+  divBurgerMenu.appendChild(footerCopyright);
+  body.appendChild(divBurgerMenu);
+
   //Create page title and navigation icons
 
   const searchIcon = createIcon("search", "search-icon");
   const burgerIcon = createIcon("grid", "menu-icon");
+  //onclick event for "burger" menu
+  const divBurgerIcon = document.createElement("div");
+  divBurgerIcon.appendChild(burgerIcon);
+
+  divBurgerIcon.addEventListener("click", displayBurgerMenu);
+  function displayBurgerMenu() {
+    divBurgerMenu.className = "c-burger-menu-visible";
+  }
   const divNav = document.createElement("div");
   const divSearch = document.createElement("div");
-  //onclick div for Search Icon
+  //onclick event for search menu
   divSearch.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
     divSearchMenu.className = "c-search-visible";
@@ -137,7 +184,7 @@ function renderSection() {
   divSearch.appendChild(searchIcon);
   divNav.className = "nav-op";
   divNav.appendChild(divSearch);
-  divNav.appendChild(burgerIcon);
+  divNav.appendChild(divBurgerIcon);
   body.appendChild(divNav);
   console.log(searchIcon);
 
