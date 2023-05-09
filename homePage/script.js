@@ -77,6 +77,74 @@ const drinksArray = [data, dataTwo, dataThree];
 window.addEventListener("load", renderSection);
 
 function renderSection() {
+  const body = document.querySelector("body");
+  //
+  //
+  //Create the Search Menu div
+
+  const divSearchMenu = document.createElement("div");
+  divSearchMenu.className = "c-search-menu";
+  const closeIcon = createIcon("close", "c-close");
+  const titleSearch = document.createElement("h2");
+  titleSearch.className = "c-title";
+  titleSearch.textContent = "search";
+  //create input , placeholder +icon
+  const divInput = document.createElement("div");
+  divInput.className = "c-divInput";
+  const inputSearch = document.createElement("input");
+  inputSearch.className = "c-input";
+  inputSearch.placeholder = "type here";
+  const inputSearchIcon = createIcon("search", "c-search");
+
+  const showResults = document.createElement("p");
+  showResults.className = "c-paragraph";
+  showResults.textContent = "results";
+
+  const divResultImage = document.createElement("figure");
+  const resultImage = document.createElement("img");
+  resultImage.src = "../homePage/Group.png";
+  const figcaption = document.createElement("figcaption");
+  figcaption.className = "c-figcaption";
+  figcaption.textContent = "no results yet";
+  //append
+  divSearchMenu.appendChild(closeIcon);
+  divSearchMenu.appendChild(titleSearch);
+  divInput.appendChild(inputSearch);
+  divInput.appendChild(inputSearchIcon);
+  divSearchMenu.appendChild(divInput);
+  divSearchMenu.appendChild(showResults);
+  divResultImage.appendChild(resultImage);
+  divResultImage.appendChild(figcaption);
+  divSearchMenu.appendChild(divResultImage);
+  body.appendChild(divSearchMenu);
+
+  //
+  //
+  //Create page title and navigation icons
+
+  const searchIcon = createIcon("search", "search-icon");
+  const burgerIcon = createIcon("grid", "menu-icon");
+  const divNav = document.createElement("div");
+  const divSearch = document.createElement("div");
+  //onclick div for Search Icon
+  divSearch.addEventListener("click", displaySearchMenu);
+  function displaySearchMenu() {
+    divSearchMenu.className = "c-search-visible";
+  }
+  divSearch.className = "div-search";
+  divSearch.appendChild(searchIcon);
+  divNav.className = "nav-op";
+  divNav.appendChild(divSearch);
+  divNav.appendChild(burgerIcon);
+  body.appendChild(divNav);
+  console.log(searchIcon);
+
+  // create page title
+  const pageTitle = document.createElement("h1");
+  pageTitle.className = "pageTitle";
+  pageTitle.innerHTML = `<h1> cocktail <br> master</h1>`;
+  body.appendChild(pageTitle);
+
   //Append shit
   for (obj of drinksArray) {
     const body = document.querySelector("body");
@@ -167,4 +235,13 @@ function renderCard(item) {
   divCard.appendChild(divCardTitle);
   divCard.appendChild(divCardIcon);
   return divCard;
+}
+
+//write a function to create icons
+
+function createIcon(nameIcon, classIcon) {
+  const ionIcon = document.createElement("ion-icon");
+  ionIcon.setAttribute("name", nameIcon);
+  ionIcon.className = classIcon;
+  return ionIcon;
 }
