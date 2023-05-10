@@ -125,10 +125,6 @@ function renderSection() {
   divResultImage.appendChild(figcaption);
   divSearchMenu.appendChild(divResultImage);
   body.appendChild(divSearchMenu);
-
-  //
-  //
-
   //
   //
   //Create the "burger" navigation
@@ -142,21 +138,12 @@ function renderSection() {
   }
   const divLinks = document.createElement("div");
   divLinks.className = "c-links";
-  const homeLink = document.createElement("h2");
-  homeLink.textContent = "home";
-  homeLink.className = "c-menu";
-  const favoritesLink = document.createElement("h2");
-  favoritesLink.textContent = "favorites";
-  favoritesLink.className = "c-menu";
-  const popularLink = document.createElement("h2");
-  popularLink.textContent = "popular drinks";
-  popularLink.className = "c-menu";
-  const latestDrinksLink = document.createElement("h2");
-  latestDrinksLink.textContent = "latest drinks";
-  latestDrinksLink.className = "c-menu";
-  const randomLink = document.createElement("h2");
-  randomLink.textContent = "random drinks";
-  randomLink.className = "c-menu";
+  const homeLink = createHeadings("home", "c-menu");
+  const favoritesLink = createHeadings("favorites", "c-menu");
+  const popularLink = createHeadings("popular drinks", "c-menu");
+  const latestDrinksLink = createHeadings("latest drinks", "c-menu");
+  const randomLink = createHeadings("random drinks", "c-menu");
+
   const footerCopyright = document.createElement("p");
   footerCopyright.className = "c-copyright";
   footerCopyright.innerHTML = "<p>&copy2023 SkiwindGroup & TheCocktailDB";
@@ -303,4 +290,13 @@ function createIcon(nameIcon, classIcon) {
   ionIcon.setAttribute("name", nameIcon);
   ionIcon.className = classIcon;
   return ionIcon;
+}
+
+//write a function to create headings for the burger page
+
+function createHeadings(content, addClass) {
+  const heading = document.createElement("h1");
+  heading.textContent = content;
+  heading.className = addClass;
+  return heading;
 }
