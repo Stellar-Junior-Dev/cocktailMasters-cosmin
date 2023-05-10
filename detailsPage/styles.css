@@ -76,7 +76,7 @@ img {
 .divDetails {
   display: flex;
   /* margin left and margin right should be the same, use margin: x y; */
-  margin: 8px 24px;
+  padding: 8px 24px;
   /* add width and box sizing so that the scroll works */
   /* overflow-x: scroll; not sure? */
   overflow-x: scroll;
