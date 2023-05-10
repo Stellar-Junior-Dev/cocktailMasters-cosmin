@@ -91,9 +91,7 @@ function renderSection() {
   function exitPage() {
     divSearchMenu.className = "c-search-menu";
   }
-  const titleSearch = document.createElement("h2");
-  titleSearch.className = "c-title";
-  titleSearch.textContent = "search";
+  const titleSearch = createHeadings("search", "c-title");
   //create input , placeholder +icon
   const divInput = document.createElement("div");
   divInput.className = "c-divInput";
