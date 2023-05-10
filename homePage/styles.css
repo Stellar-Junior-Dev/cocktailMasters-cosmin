@@ -68,6 +68,7 @@ button {
   background-color: #fff4ec;
 }
 .row-drinks {
+  box-sizing: border-box;
   width: 100vw;
   display: flex;
   overflow-x: scroll;
