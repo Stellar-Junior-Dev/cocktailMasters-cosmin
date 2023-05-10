@@ -91,19 +91,18 @@ function renderSection() {
   function exitPage() {
     divSearchMenu.className = "c-search-menu";
   }
+  //
+
   const titleSearch = createHeadings("search", "c-title");
-  //create input , placeholder +icon
   const divInput = document.createElement("div");
   divInput.className = "c-divInput";
   const inputSearch = document.createElement("input");
   inputSearch.className = "c-input";
   inputSearch.placeholder = "type here";
   const inputSearchIcon = createIcon("search", "c-search");
-
   const showResults = document.createElement("p");
   showResults.className = "c-paragraph";
   showResults.textContent = "results";
-
   const divResultImage = document.createElement("figure");
   divResultImage.className = "c-icon-result";
   const resultImage = document.createElement("img");
@@ -173,7 +172,7 @@ function renderSection() {
   //onclick event for search menu
   divSearch.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
-    divSearchMenu.className = "c-search-visible";
+    divSearchMenu.classList.add("c-search-visible");
   }
   divSearch.className = "div-search";
   divSearch.appendChild(searchIcon);
