@@ -133,6 +133,13 @@ button {
   padding: 0.2em;
 }
 
+.c-search-page {
+  position: fixed;
+  width: 100vh;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
 .c-search-menu {
   position: fixed;
   bottom: 0px;
@@ -142,16 +149,16 @@ button {
   overflow: hidden;
   background: #fff4ec;
   border-radius: 16px 16px 0px 0px;
-  z-index: 1;
+  z-index: 10;
 }
-.c-search-visible::before {
+/* .c-search-visible::before {
   content: "";
   width: 100%;
   height: 20vh;
   position: fixed;
   top: 0;
   background: rgba(0, 0, 0, 0.1);
-}
+} */
 .c-search-visible {
   max-height: 100vh;
   transition: 0.5s ease-in-out max-height;

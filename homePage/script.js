@@ -90,6 +90,7 @@ function renderSection() {
   closeIcon.addEventListener("click", exitPage);
   function exitPage() {
     divSearchMenu.className = "c-search-menu";
+    body.classList.remove("c-search-page");
   }
   //
 
@@ -121,6 +122,7 @@ function renderSection() {
   divResultImage.appendChild(resultImage);
   divResultImage.appendChild(figcaption);
   divSearchMenu.appendChild(divResultImage);
+
   body.appendChild(divSearchMenu);
   //
   //
@@ -173,6 +175,9 @@ function renderSection() {
   divSearch.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
     divSearchMenu.classList.add("c-search-visible");
+    const searchPage = document.createElement("div");
+    searchPage.className = "c-search-page";
+    body.classList.add("c-search-page");
   }
   divSearch.className = "div-search";
   divSearch.appendChild(searchIcon);
