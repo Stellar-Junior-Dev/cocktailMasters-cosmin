@@ -81,7 +81,7 @@ function renderSection() {
   //
   //
   //Create the Search Menu div
-
+  const searchPage = document.createElement("div");
   const divSearchMenu = document.createElement("div");
   divSearchMenu.className = "c-search-menu";
   const closeIcon = createIcon("close", "c-close");
@@ -90,7 +90,7 @@ function renderSection() {
   closeIcon.addEventListener("click", exitPage);
   function exitPage() {
     divSearchMenu.className = "c-search-menu";
-    body.classList.remove("c-search-page");
+    searchPage.remove("c-search-page");
   }
   //
 
@@ -122,8 +122,8 @@ function renderSection() {
   divResultImage.appendChild(resultImage);
   divResultImage.appendChild(figcaption);
   divSearchMenu.appendChild(divResultImage);
-
-  body.appendChild(divSearchMenu);
+  searchPage.appendChild(divSearchMenu);
+  body.appendChild(searchPage);
   //
   //
   //Create the "burger" navigation
@@ -175,9 +175,8 @@ function renderSection() {
   divSearch.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
     divSearchMenu.classList.add("c-search-visible");
-    const searchPage = document.createElement("div");
-    searchPage.className = "c-search-page";
-    body.classList.add("c-search-page");
+
+    searchPage.classList.add("c-search-page");
   }
   divSearch.className = "div-search";
   divSearch.appendChild(searchIcon);
