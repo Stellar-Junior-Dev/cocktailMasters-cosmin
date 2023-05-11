@@ -90,7 +90,7 @@ function renderSection() {
   closeIcon.addEventListener("click", exitPage);
   function exitPage() {
     divSearchMenu.className = "c-search-menu";
-    searchPage.remove("c-search-page");
+    searchPage.classList.remove("c-search-page");
   }
   //
 
