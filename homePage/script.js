@@ -133,7 +133,7 @@ function renderSection() {
   const exitMenuIcon = createIcon("close", "c-exit");
   exitMenuIcon.addEventListener("click", exitMenu);
   function exitMenu() {
-    divBurgerMenu.className = "c-burger-menu";
+    divBurgerMenu.classList.remove("c-burger-menu-visible");
   }
   const divLinks = document.createElement("div");
   divLinks.className = "c-links";
@@ -167,7 +167,7 @@ function renderSection() {
 
   divBurgerIcon.addEventListener("click", displayBurgerMenu);
   function displayBurgerMenu() {
-    divBurgerMenu.className = "c-burger-menu-visible";
+    divBurgerMenu.classList.add("c-burger-menu-visible");
   }
   const divNav = document.createElement("div");
   const divSearch = document.createElement("div");
@@ -189,7 +189,7 @@ function renderSection() {
   // create page title
   const pageTitle = document.createElement("h1");
   pageTitle.className = "pageTitle";
-  pageTitle.innerHTML = `<h1> cocktail <br> master</h1>`;
+  pageTitle.innerHTML = ` cocktail <br> master`;
   body.appendChild(pageTitle);
 
   //Append shit

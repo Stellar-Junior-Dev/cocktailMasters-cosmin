@@ -21,32 +21,28 @@ header {
 .nav-op {
   display: flex;
   justify-content: flex-end;
+  padding: 24px 24px 0 24px;
 }
 .search-icon {
   width: 24px;
   height: 24px;
-  padding-right: 17.92px;
-  padding-top: 22px;
+  padding-right: 14px;
   color: #c98686;
 }
 .menu-icon {
   width: 24px;
   height: 24px;
-  padding-right: 24px;
-  padding-top: 24px;
   color: #c98686;
   font-weight: bold;
 }
 
-.pageTitle h1 {
+.pageTitle {
   text-transform: uppercase;
   font-style: normal;
   font-weight: 900;
-  font-size: 40px;
-  line-height: 54px;
   color: #c98686;
-  padding-left: 24px;
-  margin: 0;
+  /* padding-left: 24px; */
+  /* Am lasat padding -> The "pageTitle" class is already an h1 so no further styling inside is required. */
 }
 h3 {
   text-transform: uppercase;
@@ -247,56 +243,67 @@ button {
 /* Burger Page */
 
 .c-burger-menu {
-  position: absolute;
+  /* position: absolute;
   left: -100%;
   z-index: 1;
-  width: 100%;
-}
-.c-burger-menu-visible {
+  width: 100%; */
   position: fixed;
   z-index: 1;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+  white-space: nowrap;
   background-color: #fff4ec;
-  transition: 1s ease-in-out 0.2s;
+  transition: 0.5s ease-in-out max-width;
+  max-width: 0;
+  overflow: hidden;
+}
+.c-burger-menu-visible {
+  max-width: 100vh;
 }
 .c-exit {
-  position: absolute;
+  /* position: absolute;
   top: 22px;
-  right: 24px;
+  right: 24px; */
   color: #c98686;
   border-radius: 2px;
   font-size: 2em;
+  padding: 24px;
+  margin-left: auto;
 }
+
 .c-links {
-  position: absolute;
+  /* position: absolute;
   right: 24px;
   text-align: right;
-  margin-top: 13px;
+  margin-top: 13px; */
 
   text-align: right;
+  margin-right: 24px;
 }
 .c-menu {
   font-family: "Noto Sans";
   font-style: normal;
-  font-weight: 900;
+  /* font-weight: 900;
   font-size: 24px;
   line-height: 33px;
-  text-align: right;
+  text-align: right; */
   color: #c98686;
   text-transform: uppercase;
-}
-.c-menu:first-child {
-  margin-top: 83px;
 }
 
 .c-copyright {
   margin: 0;
-  padding-top: 816px;
+  /* padding-top: 816px; */
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 900;
-  font-size: 12px;
+
   line-height: 16px;
   color: #dcacaa;
   text-align: center;
+  margin-top: auto;
 }
