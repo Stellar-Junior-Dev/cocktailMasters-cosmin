@@ -41,7 +41,7 @@ header {
   font-style: normal;
   font-weight: 900;
   color: #c98686;
-  /* padding-left: 24px; */
+  padding-left: 24px;
   /* Am lasat padding -> The "pageTitle" class is already an h1 so no further styling inside is required. */
 }
 h3 {
@@ -178,7 +178,7 @@ button {
   font-size: 40px;
   line-height: 54px;
 }
-.c-divInput {
+.c-inputElement {
   position: absolute;
   top: 110px;
   left: 24px;
