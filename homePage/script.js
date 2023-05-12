@@ -76,10 +76,9 @@ const drinksArray = [data, dataTwo, dataThree];
 
 window.addEventListener("load", renderSection);
 
-function renderSection() {
+function renderSearchPage() {
+  //Organize all code lines that involve the search page and its rendering :
   const body = document.querySelector("body");
-
-  //Organise all code lines that involve the search page and its rendering :
   const searchPage = createDivs();
   const searchMenu = createDivs("c-search-menu");
 
@@ -130,11 +129,13 @@ function renderSection() {
     searchMenu.className = "c-search-menu";
     searchPage.classList.remove("c-search-page");
   }
+  const iconNav = createDivs("nav-op");
+  iconNav.appendChild(searchElem);
+  body.appendChild(iconNav);
+}
 
-  //
-  //
-  //
-  //Organise all code lines that involve the menu icon and menu page
+function renderBurgerPage() {
+  const body = document.querySelector("body");
 
   const burgerMenu = createDivs("c-burger-menu");
   const burgerIcon = createIcon("grid", "menu-icon");
@@ -171,13 +172,15 @@ function renderSection() {
   function exitMenu() {
     burgerMenu.classList.remove("c-burger-menu-visible");
   }
-  //
-  //Append  search page and menu page
-
-  const iconNav = createDivs("nav-op");
-  iconNav.appendChild(searchElem);
+  const iconNav = document.querySelector(".nav-op");
   iconNav.appendChild(burgerIconElem);
-  body.appendChild(iconNav);
+}
+
+function renderSection() {
+  const body = document.querySelector("body");
+  renderSearchPage();
+  renderBurgerPage();
+
   // Create main page
   const pageTitle = document.createElement("h1");
   pageTitle.className = "pageTitle";
