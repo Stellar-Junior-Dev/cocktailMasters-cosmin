@@ -117,8 +117,6 @@ function renderSearchPage() {
   //click event for search menu
   searchElem.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
-    // searchMenu.classList.add("c-search-visible");
-
     searchPage.classList.add("c-search-page");
   }
 
@@ -151,7 +149,7 @@ function renderBurgerPage() {
 
   const footerCopyright = document.createElement("p");
   footerCopyright.className = "c-copyright";
-  footerCopyright.innerHTML = "<p>&copy2023 SkiwindGroup & TheCocktailDB";
+  footerCopyright.innerHTML = "&copy2023 SkiwindGroup & TheCocktailDB";
   burgerMenu.appendChild(footerCopyright);
 
   //onclick event for "burger" menu
@@ -187,7 +185,7 @@ function renderSection() {
 
   for (obj of drinksArray) {
     const body = document.querySelector("body");
-    const main = document.createElement("main");
+    const main = createDivs("c-card-section");
     const header = document.createElement("header");
     main.appendChild(header);
     const drinkTypeTitle = createDivs("title-name");
