@@ -243,39 +243,42 @@ function renderCard(item) {
   const divCard = document.createElement("div");
   divCard.classList.add("card");
 
-  const divCardImage = document.createElement("div");
-  divCardImage.classList.add("card-image");
+  const cardImage = renderCardImage(item);
+  const textCardContent = renderTextCard(item);
+  const cardIcon = renderCardIcon(item);
+  appendChildren(divCard, [cardImage, textCardContent, cardIcon]);
+  return divCard;
+}
+function renderCardImage(item) {
+  const divCardImage = createDivs("card-image");
 
   const image = document.createElement("img");
   image.src = item.image;
   image.alt = item.name;
+  divCardImage.appendChild(image);
+  return divCardImage;
+}
 
-  const divCardTitle = document.createElement("div");
-  divCardTitle.classList.add("card-title");
-
-  const divCenter = document.createElement("div");
-  divCenter.classList.add("center");
-
+function renderTextCard(item) {
+  const divCardTitle = createDivs("card-title");
+  const divCenter = createDivs("center");
   const paragraph = document.createElement("p");
   paragraph.textContent = item.name;
+  divCenter.appendChild(paragraph);
+  divCardTitle.appendChild(divCenter);
+  return divCardTitle;
+}
 
-  const divCardIcon = document.createElement("div");
-  divCardIcon.classList.add("card-icon");
+function renderCardIcon(item) {
+  const divCardIcon = createDivs("card-icon");
   const icon = document.createElement("ion-icon");
   if (item.favorite === true) {
     icon.setAttribute("name", "heart");
   } else {
     icon.setAttribute("name", "heart-outline");
   }
-
   divCardIcon.appendChild(icon);
-  divCenter.appendChild(paragraph);
-  divCardTitle.appendChild(divCenter);
-  divCardImage.appendChild(image);
-  divCard.appendChild(divCardImage);
-  divCard.appendChild(divCardTitle);
-  divCard.appendChild(divCardIcon);
-  return divCard;
+  return divCardIcon;
 }
 
 //write a function to create icons
