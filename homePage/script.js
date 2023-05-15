@@ -165,7 +165,7 @@ function renderBurgerPage() {
     burgerMenu.classList.remove("c-burger-menu-visible");
   }
   const iconNav = document.querySelector(".nav-op");
-  iconNav.appendChild(burgerIconElem);
+  // iconNav.appendChild(burgerIconElem);
 
   return burgerMenu;
 }
@@ -173,40 +173,69 @@ function renderBurgerPage() {
 function renderSection() {
   const body = document.querySelector("body");
   const clickSearch = renderSearchPage();
-  body.appendChild(clickSearch);
   const clickMenu = renderBurgerPage();
-  body.appendChild(clickMenu);
-
+  const mainPage = renderMainPage();
+  appendChildren(body, [clickSearch, clickMenu, mainPage]);
   // Create main page
+}
+function renderMainPage() {
+  const mainPage = document.createElement("div");
+  const titleHomePage = renderTitleHomePage();
+  const pageMainContent = renderMainContent();
+  appendChildren(mainPage, [titleHomePage, pageMainContent]);
+  return mainPage;
+}
+
+function renderTitleHomePage() {
   const pageTitle = document.createElement("h1");
   pageTitle.className = "pageTitle";
   pageTitle.innerHTML = ` cocktail <br> master`;
-  body.appendChild(pageTitle);
+  return pageTitle;
+}
+
+function renderMainContent() {
+  const mainContent = document.createElement("div");
 
   for (obj of drinksArray) {
-    const body = document.querySelector("body");
-    const main = createDivs("c-card-section");
-    const header = document.createElement("header");
-    main.appendChild(header);
-    const drinkTypeTitle = createDivs("title-name");
-    header.appendChild(drinkTypeTitle);
-    const viewBtn = createDivs("view-all-button");
-    header.appendChild(viewBtn);
-    const button = document.createElement("button");
-    button.innerHTML = `view all <ion-icon name="chevron-forward-outline"></ion-icon>`;
-    viewBtn.appendChild(button);
-    const rowDrinks = createDivs("row-drinks");
+    const drinksCategoryName = renderHeader();
+    const mainDrinksCard = renderMainCards();
+
+    appendChildren(mainContent, [drinksCategoryName, mainDrinksCard]);
+  }
+  return mainContent;
+}
+
+function renderHeader() {
+  const header = document.createElement("header");
+  const drinkTypeTitle = createDivs("title-name");
+  const drinkType = document.createElement("h3");
+  drinkType.textContent = obj.categoryName;
+  drinkTypeTitle.appendChild(drinkType);
+  const viewBtn = createDivs("view-all-button");
+  const button = document.createElement("button");
+  button.innerHTML = "view all";
+  const viewAllIcon = document.createElement("ion-icon");
+  viewAllIcon.setAttribute("name", "chevron-forward-outline");
+  button.appendChild(viewAllIcon);
+  viewBtn.appendChild(button);
+  appendChildren(header, [drinkTypeTitle, viewBtn]);
+  return header;
+}
+
+function renderMainCards() {
+  const main = createDivs("c-card-section");
+  const rowDrinks = createDivs("row-drinks");
+  for (item of obj.cocktailList) {
+    let card = renderCard(item);
+    rowDrinks.appendChild(card);
     main.appendChild(rowDrinks);
-    const drinkType = document.createElement("h3");
-    drinkType.textContent = obj.categoryName;
-    drinkTypeTitle.appendChild(drinkType);
+  }
+  return main;
+}
 
-    body.appendChild(main);
-
-    for (item of obj.cocktailList) {
-      let card = renderCard(item);
-      rowDrinks.appendChild(card);
-    }
+function appendChildren(tag, arr) {
+  for (item of arr) {
+    tag.appendChild(item);
   }
 }
 
