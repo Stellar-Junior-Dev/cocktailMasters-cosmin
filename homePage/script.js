@@ -77,49 +77,47 @@ const drinksArray = [data, dataTwo, dataThree];
 window.addEventListener("load", renderSection);
 
 function renderSearchPage() {
-  //Organize all code lines that involve the search page and its rendering :
   const body = document.querySelector("body");
-  const searchPage = createDivs();
+  const searchPage = createDivs("c-search-transition");
+  body.appendChild(searchPage);
   const searchMenu = createDivs("c-search-menu");
-
-  const searchIcon = createIcon("search", "search-icon");
+  searchPage.appendChild(searchMenu);
   const searchElem = createDivs("search-element");
+  const searchIcon = createIcon("search", "search-icon");
   searchElem.appendChild(searchIcon);
+  const iconNav = createDivs("nav-op");
+  iconNav.appendChild(searchElem);
   const closeIcon = createIcon("close", "c-close");
-  //
+  searchMenu.appendChild(closeIcon);
   const titleSearch = createHeadings("search", "c-title");
+  searchMenu.appendChild(titleSearch);
   const inputElement = createDivs("c-inputElement");
   const inputSearch = document.createElement("input");
   inputSearch.className = "c-input";
   inputSearch.placeholder = "type here";
   const inputSearchIcon = createIcon("search", "c-search");
+  inputElement.appendChild(inputSearch);
+  inputElement.appendChild(inputSearchIcon);
+  searchMenu.appendChild(inputElement);
   const showResults = document.createElement("p");
   showResults.className = "c-paragraph";
   showResults.textContent = "results";
+  searchMenu.appendChild(showResults);
   const figureImage = document.createElement("figure");
   figureImage.className = "c-icon-result";
   const resultImage = document.createElement("img");
   resultImage.src = "./Group.png";
   resultImage.className = "c-icon";
+  figureImage.appendChild(resultImage);
   const figcaption = document.createElement("figcaption");
   figcaption.className = "c-figcaption";
   figcaption.textContent = "no results yet";
-  //append
-  searchMenu.appendChild(closeIcon);
-  searchMenu.appendChild(titleSearch);
-  inputElement.appendChild(inputSearch);
-  inputElement.appendChild(inputSearchIcon);
-  searchMenu.appendChild(inputElement);
-  searchMenu.appendChild(showResults);
-  figureImage.appendChild(resultImage);
   figureImage.appendChild(figcaption);
   searchMenu.appendChild(figureImage);
-  searchPage.appendChild(searchMenu);
-  body.appendChild(searchPage);
-  //onclick event for search menu
+  //click event for search menu
   searchElem.addEventListener("click", displaySearchMenu);
   function displaySearchMenu() {
-    searchMenu.classList.add("c-search-visible");
+    // searchMenu.classList.add("c-search-visible");
 
     searchPage.classList.add("c-search-page");
   }
@@ -129,37 +127,33 @@ function renderSearchPage() {
     searchMenu.className = "c-search-menu";
     searchPage.classList.remove("c-search-page");
   }
-  const iconNav = createDivs("nav-op");
-  iconNav.appendChild(searchElem);
-  body.appendChild(iconNav);
+
+  return iconNav;
 }
 
 function renderBurgerPage() {
-  const body = document.querySelector("body");
-
   const burgerMenu = createDivs("c-burger-menu");
   const burgerIcon = createIcon("grid", "menu-icon");
   const exitMenuIcon = createIcon("close", "c-exit");
+  burgerMenu.appendChild(exitMenuIcon);
   const headerContainer = createDivs("c-links");
+  burgerMenu.appendChild(headerContainer);
   const homeLink = createHeadings("home", "c-menu");
+  headerContainer.appendChild(homeLink);
   const favoritesLink = createHeadings("favorites", "c-menu");
+  headerContainer.appendChild(favoritesLink);
   const popularLink = createHeadings("popular drinks", "c-menu");
+  headerContainer.appendChild(popularLink);
   const latestDrinksLink = createHeadings("latest drinks", "c-menu");
+  headerContainer.appendChild(latestDrinksLink);
   const randomLink = createHeadings("random drinks", "c-menu");
+  headerContainer.appendChild(randomLink);
 
   const footerCopyright = document.createElement("p");
   footerCopyright.className = "c-copyright";
   footerCopyright.innerHTML = "<p>&copy2023 SkiwindGroup & TheCocktailDB";
-  //append
-  burgerMenu.appendChild(exitMenuIcon);
-  headerContainer.appendChild(homeLink);
-  headerContainer.appendChild(favoritesLink);
-  headerContainer.appendChild(popularLink);
-  headerContainer.appendChild(latestDrinksLink);
-  headerContainer.appendChild(randomLink);
-  burgerMenu.appendChild(headerContainer);
   burgerMenu.appendChild(footerCopyright);
-  body.appendChild(burgerMenu);
+
   //onclick event for "burger" menu
   const burgerIconElem = createDivs();
   burgerIconElem.appendChild(burgerIcon);
@@ -174,12 +168,16 @@ function renderBurgerPage() {
   }
   const iconNav = document.querySelector(".nav-op");
   iconNav.appendChild(burgerIconElem);
+
+  return burgerMenu;
 }
 
 function renderSection() {
   const body = document.querySelector("body");
-  renderSearchPage();
-  renderBurgerPage();
+  const clickSearch = renderSearchPage();
+  body.appendChild(clickSearch);
+  const clickMenu = renderBurgerPage();
+  body.appendChild(clickMenu);
 
   // Create main page
   const pageTitle = document.createElement("h1");
@@ -189,38 +187,28 @@ function renderSection() {
 
   for (obj of drinksArray) {
     const body = document.querySelector("body");
-
-    //build sections :
-    const section = document.createElement("section");
-    section.className = "group";
-    //build header
+    const main = document.createElement("main");
     const header = document.createElement("header");
-    //build div title
-    const drinkTypeTitle = document.createElement("div");
-    drinkTypeTitle.className = "title-name";
-    //build div-buttons
+    main.appendChild(header);
+    const drinkTypeTitle = createDivs("title-name");
+    header.appendChild(drinkTypeTitle);
     const viewBtn = createDivs("view-all-button");
-    //Build button
+    header.appendChild(viewBtn);
     const button = document.createElement("button");
     button.innerHTML = `view all <ion-icon name="chevron-forward-outline"></ion-icon>`;
-    //build divDrinks
+    viewBtn.appendChild(button);
     const rowDrinks = createDivs("row-drinks");
+    main.appendChild(rowDrinks);
     const drinkType = document.createElement("h3");
-
     drinkType.textContent = obj.categoryName;
     drinkTypeTitle.appendChild(drinkType);
-    viewBtn.appendChild(button);
-    header.appendChild(drinkTypeTitle);
-    header.appendChild(viewBtn);
-    section.appendChild(header);
-    body.appendChild(section);
-    const main = document.createElement("main");
+
+    body.appendChild(main);
+
     for (item of obj.cocktailList) {
       let card = renderCard(item);
       rowDrinks.appendChild(card);
     }
-    main.appendChild(rowDrinks);
-    section.appendChild(main);
   }
 }
 
@@ -233,6 +221,7 @@ function renderCard(item) {
 
   const image = document.createElement("img");
   image.src = item.image;
+  image.alt = item.name;
 
   const divCardTitle = document.createElement("div");
   divCardTitle.classList.add("card-title");
