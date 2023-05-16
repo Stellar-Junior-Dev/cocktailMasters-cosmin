@@ -79,18 +79,67 @@ window.addEventListener("load", renderSection);
 function renderSearchPage() {
   const body = document.querySelector("body");
   const searchPage = createDivs("c-search-transition");
+  searchPage.id = "id-search-page";
   body.appendChild(searchPage);
   const searchMenu = createDivs("c-search-menu");
+  searchMenu.id = "id-search-menu";
   searchPage.appendChild(searchMenu);
+  //Append new functions
+  const searchHeaderElement = searchPageHeader();
+  const searchInputElement = renderInputElement();
+  const searchTextResult = renderTextResult();
+  const cocktailImageResult = renderFigure();
+  appendChildren(searchMenu, [
+    searchHeaderElement,
+    searchInputElement,
+    searchTextResult,
+    cocktailImageResult,
+  ]);
+  return searchPage;
+}
+//
+function renderNavigationIcons() {
   const searchElem = createDivs("search-element");
   const searchIcon = createIcon("search", "search-icon");
   searchElem.appendChild(searchIcon);
   const iconNav = createDivs("nav-op");
   iconNav.appendChild(searchElem);
+
+  searchElem.addEventListener("click", displaySearchMenu);
+  function displaySearchMenu() {
+    const selectPage = document.getElementById("id-search-page");
+    selectPage.classList.add("c-search-page");
+  }
+
+  const burgerIconElem = createDivs();
+  const burgerIcon = createIcon("grid", "menu-icon");
+  burgerIconElem.appendChild(burgerIcon);
+
+  burgerIconElem.addEventListener("click", displayBurgerMenu);
+  function displayBurgerMenu() {
+    const burgerSelect = document.getElementById("id-burger");
+    burgerSelect.classList.add("c-burger-menu-visible");
+  }
+
+  iconNav.appendChild(burgerIconElem);
+  return iconNav;
+}
+//
+function searchPageHeader() {
+  const headerElement = document.createElement("div");
   const closeIcon = createIcon("close", "c-close");
-  searchMenu.appendChild(closeIcon);
   const titleSearch = createHeadings("search", "c-title");
-  searchMenu.appendChild(titleSearch);
+  closeIcon.addEventListener("click", exitPage);
+  function exitPage() {
+    const exitButton = document.getElementById("id-search-page");
+    exitButton.classList.remove("c-search-page");
+  }
+
+  appendChildren(headerElement, [closeIcon, titleSearch]);
+  return headerElement;
+}
+//
+function renderInputElement() {
   const inputElement = createDivs("c-inputElement");
   const inputSearch = document.createElement("input");
   inputSearch.className = "c-input";
@@ -98,11 +147,18 @@ function renderSearchPage() {
   const inputSearchIcon = createIcon("search", "c-search");
   inputElement.appendChild(inputSearch);
   inputElement.appendChild(inputSearchIcon);
-  searchMenu.appendChild(inputElement);
+  return inputElement;
+}
+
+//
+function renderTextResult() {
   const showResults = document.createElement("p");
   showResults.className = "c-paragraph";
   showResults.textContent = "results";
-  searchMenu.appendChild(showResults);
+  return showResults;
+}
+//
+function renderFigure() {
   const figureImage = document.createElement("figure");
   figureImage.className = "c-icon-result";
   const resultImage = document.createElement("img");
@@ -113,61 +169,51 @@ function renderSearchPage() {
   figcaption.className = "c-figcaption";
   figcaption.textContent = "no results yet";
   figureImage.appendChild(figcaption);
-  searchMenu.appendChild(figureImage);
-  //click event for search menu
-  searchElem.addEventListener("click", displaySearchMenu);
-  function displaySearchMenu() {
-    searchPage.classList.add("c-search-page");
-  }
-
-  closeIcon.addEventListener("click", exitPage);
-  function exitPage() {
-    searchMenu.className = "c-search-menu";
-    searchPage.classList.remove("c-search-page");
-  }
-
-  return iconNav;
+  return figureImage;
 }
 
 function renderBurgerPage() {
   const burgerMenu = createDivs("c-burger-menu");
-  const burgerIcon = createIcon("grid", "menu-icon");
+  burgerMenu.id = "id-burger";
+  const closeBurgerPage = renderExitBurgerMenu();
+  const burgerLinks = renderBurgerLinks();
+  const copyrightElement = renderCopyright();
+  appendChildren(burgerMenu, [closeBurgerPage, burgerLinks, copyrightElement]);
+  return burgerMenu;
+}
+function renderExitBurgerMenu() {
   const exitMenuIcon = createIcon("close", "c-exit");
-  burgerMenu.appendChild(exitMenuIcon);
-  const headerContainer = createDivs("c-links");
-  burgerMenu.appendChild(headerContainer);
-  const homeLink = createHeadings("home", "c-menu");
-  headerContainer.appendChild(homeLink);
-  const favoritesLink = createHeadings("favorites", "c-menu");
-  headerContainer.appendChild(favoritesLink);
-  const popularLink = createHeadings("popular drinks", "c-menu");
-  headerContainer.appendChild(popularLink);
-  const latestDrinksLink = createHeadings("latest drinks", "c-menu");
-  headerContainer.appendChild(latestDrinksLink);
-  const randomLink = createHeadings("random drinks", "c-menu");
-  headerContainer.appendChild(randomLink);
 
+  exitMenuIcon.addEventListener("click", exitMenu);
+  function exitMenu() {
+    const burgerExitButton = document.getElementById("id-burger");
+    burgerExitButton.remove("c-burger-menu-visible");
+  }
+  return exitMenuIcon;
+}
+
+function renderBurgerLinks() {
+  const linksArray = [
+    "home",
+    "favorites",
+    "popular drinks",
+    "latest drinks",
+    "random drinks",
+  ];
+  const headerContainer = createDivs("c-links");
+  for (let i = 0; i < linksArray.length; i++) {
+    const link = createHeadings(linksArray[i], "c-menu");
+    headerContainer.appendChild(link);
+  }
+
+  return headerContainer;
+}
+
+function renderCopyright() {
   const footerCopyright = document.createElement("p");
   footerCopyright.className = "c-copyright";
   footerCopyright.innerHTML = "&copy2023 SkiwindGroup & TheCocktailDB";
-  burgerMenu.appendChild(footerCopyright);
-
-  //onclick event for "burger" menu
-  const burgerIconElem = createDivs();
-  burgerIconElem.appendChild(burgerIcon);
-
-  burgerIconElem.addEventListener("click", displayBurgerMenu);
-  function displayBurgerMenu() {
-    burgerMenu.classList.add("c-burger-menu-visible");
-  }
-  exitMenuIcon.addEventListener("click", exitMenu);
-  function exitMenu() {
-    burgerMenu.classList.remove("c-burger-menu-visible");
-  }
-  const iconNav = document.querySelector(".nav-op");
-  // iconNav.appendChild(burgerIconElem);
-
-  return burgerMenu;
+  return footerCopyright;
 }
 
 function renderSection() {
@@ -175,14 +221,16 @@ function renderSection() {
   const clickSearch = renderSearchPage();
   const clickMenu = renderBurgerPage();
   const mainPage = renderMainPage();
+
   appendChildren(body, [clickSearch, clickMenu, mainPage]);
   // Create main page
 }
 function renderMainPage() {
   const mainPage = document.createElement("div");
+  const icons = renderNavigationIcons();
   const titleHomePage = renderTitleHomePage();
   const pageMainContent = renderMainContent();
-  appendChildren(mainPage, [titleHomePage, pageMainContent]);
+  appendChildren(mainPage, [icons, titleHomePage, pageMainContent]);
   return mainPage;
 }
 
