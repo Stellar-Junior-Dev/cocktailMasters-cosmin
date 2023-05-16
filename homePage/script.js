@@ -118,6 +118,8 @@ function renderNavigationIcons() {
   burgerIconElem.addEventListener("click", displayBurgerMenu);
   function displayBurgerMenu() {
     const burgerSelect = document.getElementById("id-burger");
+    console.log(burgerSelect);
+    console.log(typeof burgerSelect);
     burgerSelect.classList.add("c-burger-menu-visible");
   }
 
