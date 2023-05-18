@@ -3,13 +3,150 @@ let mojito = {
     "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
   favorite: false,
   name: "Mojito",
+  tags: [
+    "iba",
+    "contemporaryClassic",
+    "alcoholic",
+    "usa",
+    "asia",
+    "vegan",
+    "citrus",
+    "brunch",
+    "hangover",
+  ],
+  ingredients: [
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Lime-Medium.png",
+      mix: "2-3 oz Light burbon",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Light%20rum-Medium.png",
+      mix: "juice of 1 lime",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Sugar-Medium.png",
+      mix: "2tsp Sugar",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Mint-Medium.png",
+      mix: "2-4 Mint",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Soda%20water-Medium.png",
+      mix: "Soda water",
+    },
+  ],
+  instructions: [
+    {
+      language: "EN",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/gb.png",
+      text: `Muddle mint leaves with sugar and lime juice.
+    Add a splash of soda water and fill the glass with cracked ice.
+    Pour the rum and top with soda water.
+    Garnish and serve with straw.`,
+    },
+    {
+      language: "DE",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/de.png",
+      text: `Minzblätter mit Zucker und Limettensaft verrühren.
+Füge einen Spritzer Sodawasser hinzu und fülle das Glas mit gebrochenem Eis.
+Den Rum eingießen und mit Sodawasser übergießen.
+Garnieren und mit einem Strohhalm servieren.",
+    flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/de.png",
+    text:`,
+    },
+    {
+      language: "IT",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/it.png",
+      text: `Pestare le foglie di menta con lo zucchero e il succo di lime.
+    Aggiungere una spruzzata di acqua di seltz e riempi il bicchiere con ghiaccio tritato.
+    Versare il rum e riempire con acqua di seltz.
+    Guarnire con una fetta di lime, servire con una cannuccia.`,
+    },
+    {
+      language: "FR",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/fr.png",
+      text: `Écraser les feuilles de menthe avec le sucre et le jus de citron vert.
+      Ajouter un peu d'eau gazeuse et remplir le verre de glace pilée.
+      Versez le rhum et complétez avec de l'eau gazeuse.
+      Garnir et servir avec de la paille.`,
+    },
+    {
+      language: "ES",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/es.png",
+      text: `Triture las hojas de menta con el azúcar y el jugo de lima.
+    Agregue un chorrito de agua con gas y llene el vaso con hielo picado.
+    Vierta el ron y cubra con agua de soda.
+    Decorar y servir con pajita.`,
+    },
+  ],
 };
 
 let ginLemon = {
   image:
     "https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg",
   favorite: false,
-  name: "Gin Lemon",
+  name: "Suc Lemon",
+  tags: ["iba", "classic", "alcoholic", "expensive", "savory"],
+  ingredients: [
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Bourbon-Medium.png",
+      mix: "4.5cl bourbon",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Angostura%20bitters-Medium.png",
+      mix: "2 dashes angostura bitters",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Sugar-Medium.png",
+      mix: "1 cube sugar",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Water-Medium.png",
+      mix: "dash water",
+    },
+  ],
+  instructions: [
+    {
+      language: "EN",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/gb.png",
+      text: `Place sugar cube in old fashioned glass and saturate with bitters, add a dash of plain water.
+Muddle until dissolved.
+Fill the glass with ice cubes and add whiskey.
+Garnish with orange twist, and a cocktail cherry.`,
+    },
+    {
+      language: "DE",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/de.png",
+      text: `Zuckerwürfel in ein old fashioned Glas geben und mit Bitterstoff sättigen, einen Schuss Wasser hinzufügen.
+  Vermischen, bis sie sich auflösen.
+  `,
+    },
+    {
+      language: "IT",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/it.png",
+      text: `Mettere la zolletta di zucchero nel bicchiere vecchio stile e saturare con il bitter, aggiungere un goccio di acqua naturale.
+  Pestare finché non si scioglie.
+  Riempi il bicchiere con cubetti di ghiaccio e aggiungi il whisky.
+  Guarnire con una scorza d'arancia e una ciliegina al maraschino.`,
+    },
+    {
+      language: "FR",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/fr.png",
+      text: `Placer le morceau de sucre dans un verre à l'ancienne et saturer d'amers, ajouter un trait d'eau plate.
+  Mélanger jusqu'à dissolution.
+  Remplir le verre de glaçons et ajouter le whisky.
+  Garnir d'un zeste d'orange et d'une cerise à cocktail.`,
+    },
+    {
+      language: "ES",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/es.png",
+      text: `Coloque el terrón de azúcar en un vaso old fashioned y sature con amargo, agregue una pizca de agua corriente.
+  Triture hasta que se disuelva.
+  Llene el vaso con cubitos de hielo y agregue el whisky.
+  Adorne con twist de naranja y una cereza de cóctel.`,
+    },
+  ],
 };
 
 let oldFashioned = {
@@ -17,6 +154,66 @@ let oldFashioned = {
     "https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg",
   favorite: true,
   name: "Old Fashioned",
+  tags: ["iba", "classic", "alcoholic", "expensive", "savory"],
+  ingredients: [
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Bourbon-Medium.png",
+      mix: "4.5cl bourbon",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Angostura%20bitters-Medium.png",
+      mix: "2 dashes angostura bitters",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Sugar-Medium.png",
+      mix: "1 cube sugar",
+    },
+    {
+      img: "https://www.thecocktaildb.com/images/ingredients/Water-Medium.png",
+      mix: "dash water",
+    },
+  ],
+  instructions: [
+    {
+      language: "EN",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/gb.png",
+      text: `Place sugar cube in old fashioned glass and saturate with bitters, add a dash of plain water.
+Muddle until dissolved.
+Fill the glass with ice cubes and add whiskey.
+Garnish with orange twist, and a cocktail cherry.`,
+    },
+    {
+      language: "DE",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/de.png",
+      text: `Zuckerwürfel in ein old fashioned Glas geben und mit Bitterstoff sättigen, einen Schuss Wasser hinzufügen.
+  Vermischen, bis sie sich auflösen.
+  `,
+    },
+    {
+      language: "IT",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/it.png",
+      text: `Mettere la zolletta di zucchero nel bicchiere vecchio stile e saturare con il bitter, aggiungere un goccio di acqua naturale.
+  Pestare finché non si scioglie.
+  Riempi il bicchiere con cubetti di ghiaccio e aggiungi il whisky.
+  Guarnire con una scorza d'arancia e una ciliegina al maraschino.`,
+    },
+    {
+      language: "FR",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/fr.png",
+      text: `Placer le morceau de sucre dans un verre à l'ancienne et saturer d'amers, ajouter un trait d'eau plate.
+  Mélanger jusqu'à dissolution.
+  Remplir le verre de glaçons et ajouter le whisky.
+  Garnir d'un zeste d'orange et d'une cerise à cocktail.`,
+    },
+    {
+      language: "ES",
+      flag: "https://www.thecocktaildb.com/images/icons/flags/shiny/32/es.png",
+      text: `Coloque el terrón de azúcar en un vaso old fashioned y sature con amargo, agregue una pizca de agua corriente.
+  Triture hasta que se disuelva.
+  Llene el vaso con cubitos de hielo y agregue el whisky.
+  Adorne con twist de naranja y una cereza de cóctel.`,
+    },
+  ],
 };
 
 let data = {
@@ -118,8 +315,6 @@ function renderNavigationIcons() {
   burgerIconElem.addEventListener("click", displayBurgerMenu);
   function displayBurgerMenu() {
     const burgerSelect = document.getElementById("id-burger");
-    console.log(burgerSelect);
-    console.log(typeof burgerSelect);
     burgerSelect.classList.add("c-burger-menu-visible");
   }
 
@@ -189,7 +384,7 @@ function renderExitBurgerMenu() {
   exitMenuIcon.addEventListener("click", exitMenu);
   function exitMenu() {
     const burgerExitButton = document.getElementById("id-burger");
-    burgerExitButton.remove("c-burger-menu-visible");
+    burgerExitButton.classList.remove("c-burger-menu-visible");
   }
   return exitMenuIcon;
 }
@@ -292,7 +487,10 @@ function appendChildren(tag, arr) {
 function renderCard(item) {
   const divCard = document.createElement("div");
   divCard.classList.add("card");
-
+  divCard.addEventListener("click", () => {
+    window.localStorage.setItem("selectedCard", JSON.stringify(item));
+    window.location = "/detailsPage/detailsPage.html";
+  });
   const cardImage = renderCardImage(item);
   const textCardContent = renderTextCard(item);
   const cardIcon = renderCardIcon(item);
