@@ -192,3 +192,13 @@ function renderTitleDetail() {
   divTitle.appendChild(drinkTitle);
   return divTitle;
 }
+
+function renderFavorites(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].favorite === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

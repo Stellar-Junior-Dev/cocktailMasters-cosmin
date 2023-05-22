@@ -215,12 +215,6 @@ Garnish with orange twist, and a cocktail cherry.`,
     },
   ],
 };
-
-let data = {
-  categoryName: "Popular drinks",
-  cocktailList: [mojito, ginLemon, oldFashioned],
-};
-
 let longIslandTea = {
   image:
     "https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg",
@@ -239,12 +233,6 @@ let whiskeySour = {
   favorite: true,
   name: "Whiskey Sour",
 };
-
-let dataTwo = {
-  categoryName: "Latest drinks",
-  cocktailList: [longIslandTea, negroni, whiskeySour],
-};
-
 let dryMartini = {
   image:
     "https://www.thecocktaildb.com/images/media/drink/6ck9yi1589574317.jpg",
@@ -263,7 +251,14 @@ let margarita = {
   favorite: true,
   name: "Margarita",
 };
-
+let data = {
+  categoryName: "Popular drinks",
+  cocktailList: [mojito, ginLemon, oldFashioned],
+};
+let dataTwo = {
+  categoryName: "Latest drinks",
+  cocktailList: [longIslandTea, negroni, whiskeySour],
+};
 let dataThree = {
   categoryName: "Random drinks",
   cocktailList: [dryMartini, daiquiry, margarita],
@@ -286,14 +281,38 @@ function renderSearchPage() {
   const searchInputElement = renderInputElement();
   const searchTextResult = renderTextResult();
   const cocktailImageResult = renderFigure();
+  cocktailImageResult.id = "test";
   appendChildren(searchMenu, [
     searchHeaderElement,
     searchInputElement,
     searchTextResult,
     cocktailImageResult,
   ]);
+
+  searchInputElement.addEventListener("change", (e) => {
+    cocktailImageResult.textContent = e.target.value;
+    renderSearchResults(e.target.value);
+  });
+
   return searchPage;
 }
+function renderSearchResults(value) {
+  let newArray = [];
+
+  for (item of drinksArray) {
+    newArray = newArray.concat(
+      item.cocktailList.filter((coktail) => {
+        return coktail.name.toLowerCase().includes(value.toLowerCase());
+      })
+    );
+  }
+  console.log(newArray);
+  const newTest = document.getElementById("test");
+  for (item of newArray) {
+    newTest.appendChild(renderCard(item));
+  }
+}
+
 //
 function renderNavigationIcons() {
   const searchElem = createDivs("search-element");
