@@ -231,10 +231,13 @@ button {
   color: #c98686;
 }
 .c-icon-result {
+  height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
+  overflow-y: scroll;
 }
 .c-icon {
   color: #c98686;
@@ -310,4 +313,15 @@ button {
   color: #dcacaa;
   text-align: center;
   margin-top: auto;
+}
+.c-icon-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.c-icon-result .card:first-child {
+  margin: 0;
+}
+.c-icon-result .card {
+  margin-top: 9px;
 }

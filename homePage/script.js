@@ -249,7 +249,7 @@ let margarita = {
   image:
     "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
   favorite: true,
-  name: "Margarita",
+  n: "Margarita",
 };
 let data = {
   categoryName: "Popular drinks",
@@ -266,6 +266,20 @@ let dataThree = {
 
 const drinksArray = [data, dataTwo, dataThree];
 
+async function getData(name) {
+  const newTest = document.getElementById("test");
+  newTest.innerHTML = "";
+  const response = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+  );
+  console.log(response);
+  const data = await response.json();
+  data.drinks.forEach((item) => {
+    newTest.appendChild(
+      renderCard({image: item.strDrinkThumb, name: item.strDrink})
+    );
+  });
+}
 window.addEventListener("load", renderSection);
 
 function renderSearchPage() {
@@ -281,7 +295,7 @@ function renderSearchPage() {
   const searchInputElement = renderInputElement();
   const searchTextResult = renderTextResult();
   const cocktailImageResult = renderFigure();
-  cocktailImageResult.id = "test";
+
   appendChildren(searchMenu, [
     searchHeaderElement,
     searchInputElement,
@@ -289,9 +303,9 @@ function renderSearchPage() {
     cocktailImageResult,
   ]);
 
-  searchInputElement.addEventListener("change", (e) => {
-    cocktailImageResult.textContent = e.target.value;
-    renderSearchResults(e.target.value);
+  searchInputElement.addEventListener("keyup", (e) => {
+    // renderSearchResults(e.target.value);
+    getData(e.target.value);
   });
 
   return searchPage;
@@ -308,8 +322,13 @@ function renderSearchResults(value) {
   }
   console.log(newArray);
   const newTest = document.getElementById("test");
-  for (item of newArray) {
-    newTest.appendChild(renderCard(item));
+  newTest.innerHTML = "";
+  if (newArray.length === 0 || value.trim() === "") {
+    newTest.appendChild(renderFigure());
+  } else {
+    for (item of newArray) {
+      newTest.appendChild(renderCard(item));
+    }
   }
 }
 
@@ -349,6 +368,13 @@ function searchPageHeader() {
   function exitPage() {
     const exitButton = document.getElementById("id-search-page");
     exitButton.classList.remove("c-search-page");
+
+    const newTest = document.getElementById("test");
+    newTest.innerHTML = "";
+    newTest.appendChild(renderFigure());
+
+    const input = document.getElementById("search-input");
+    input.value = "";
   }
 
   appendChildren(headerElement, [closeIcon, titleSearch]);
@@ -360,6 +386,7 @@ function renderInputElement() {
   const inputSearch = document.createElement("input");
   inputSearch.className = "c-input";
   inputSearch.placeholder = "type here";
+  inputSearch.id = "search-input";
   const inputSearchIcon = createIcon("search", "c-search");
   inputElement.appendChild(inputSearch);
   inputElement.appendChild(inputSearchIcon);
@@ -377,6 +404,7 @@ function renderTextResult() {
 function renderFigure() {
   const figureImage = document.createElement("figure");
   figureImage.className = "c-icon-result";
+  figureImage.id = "test";
   const resultImage = document.createElement("img");
   resultImage.src = "./Group.png";
   resultImage.className = "c-icon";
